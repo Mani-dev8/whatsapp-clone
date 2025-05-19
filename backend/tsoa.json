@@ -1,20 +1,14 @@
 {
   "entryFile": "src/app.ts",
   "noImplicitAdditionalProperties": "throw-on-extras",
-  "controllerPathGlobs": ["src/api/controllers/**/*.ts"],
+  "controllerPathGlobs": ["src/api/controllers/*.ts"],
   "spec": {
-    "outputDirectory": "src/api/generated",
+    "outputDirectory": "src/api/routes",
     "specVersion": 3,
-    "securityDefinitions": {
-      "jwt": {
-        "type": "apiKey",
-        "name": "Authorization",
-        "in": "header"
-      }
-    }
+    "specFileBaseName": "swagger"
   },
   "routes": {
-    "routesDir": "src/api/generated",
-    "authenticationModule": "src/middlewares/authentication.ts"
+    "routesDir": "src/api/routes",
+    "authenticationModule": "src/api/middlewares/authMiddleware.ts"
   }
 }

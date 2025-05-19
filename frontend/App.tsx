@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
+import type { PropsWithChildren } from 'react';
 import {
   ScrollView,
   StatusBar,
@@ -25,12 +25,13 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import RootNavigator from './src/navigation/RootNavigator';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import tw from './src/libs/tailwind';
 
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
-function Section({children, title}: SectionProps): React.JSX.Element {
+function Section({ children, title }: SectionProps): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
@@ -75,9 +76,8 @@ function App(): React.JSX.Element {
   const safePadding = '5%';
 
   return (
-    <GestureHandlerRootView>
-
-      <RootNavigator/>
+    <GestureHandlerRootView style={tw`flex-1 bg-white`}>
+      <RootNavigator />
     </GestureHandlerRootView>
   );
 }
