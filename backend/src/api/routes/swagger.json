@@ -58,7 +58,6 @@
 				"additionalProperties": false
 			},
 			"MessageType": {
-				"type": "string",
 				"enum": [
 					"text",
 					"image",
@@ -66,15 +65,16 @@
 					"video",
 					"document",
 					"location"
-				]
+				],
+				"type": "string"
 			},
 			"MessageStatus": {
-				"type": "string",
 				"enum": [
 					"sent",
 					"delivered",
 					"read"
-				]
+				],
+				"type": "string"
 			},
 			"MessageResponse": {
 				"properties": {
@@ -237,7 +237,13 @@
 				"additionalProperties": false
 			}
 		},
-		"securitySchemes": {}
+		"securitySchemes": {
+			"jwt": {
+				"type": "http",
+				"scheme": "bearer",
+				"bearerFormat": "JWT"
+			}
+		}
 	},
 	"info": {
 		"title": "backend",

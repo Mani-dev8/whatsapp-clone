@@ -5,7 +5,14 @@
   "spec": {
     "outputDirectory": "src/api/routes",
     "specVersion": 3,
-    "specFileBaseName": "swagger"
+    "specFileBaseName": "swagger",
+    "securityDefinitions": {
+      "jwt": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
   },
   "routes": {
     "routesDir": "src/api/routes",

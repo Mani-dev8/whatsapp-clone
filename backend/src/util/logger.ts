@@ -1,3 +1,4 @@
+import { env } from '@/api/config/env';
 import winston from 'winston';
 
 const levels = {
@@ -9,8 +10,8 @@ const levels = {
 };
 
 const level = () => {
-  const env = process.env.NODE_ENV || 'development';
-  const isDevelopment = env === 'development';
+  const envVar = env.NODE_ENV || 'development';
+  const isDevelopment = envVar === 'development';
   return isDevelopment ? 'debug' : 'warn';
 };
 

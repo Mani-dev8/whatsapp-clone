@@ -44,13 +44,13 @@ const models: TsoaRoute.Models = {
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "MessageType": {
-        "dataType": "refAlias",
-        "type": {"dataType":"union","subSchemas":[{"dataType":"enum","enums":["text"]},{"dataType":"enum","enums":["image"]},{"dataType":"enum","enums":["voice"]},{"dataType":"enum","enums":["video"]},{"dataType":"enum","enums":["document"]},{"dataType":"enum","enums":["location"]}],"validators":{}},
+        "dataType": "refEnum",
+        "enums": ["text","image","voice","video","document","location"],
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "MessageStatus": {
-        "dataType": "refAlias",
-        "type": {"dataType":"union","subSchemas":[{"dataType":"enum","enums":["sent"]},{"dataType":"enum","enums":["delivered"]},{"dataType":"enum","enums":["read"]}],"validators":{}},
+        "dataType": "refEnum",
+        "enums": ["sent","delivered","read"],
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "MessageResponse": {

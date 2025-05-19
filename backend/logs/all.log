@@ -10,3 +10,207 @@
 2025-05-16 17:53:47:5347 [32minfo[39m: [32mserver is listening on port 5000[39m
 2025-05-18 23:36:51:3651 [32minfo[39m: [32mConnected to MongoDB[39m
 2025-05-18 23:36:51:3651 [32minfo[39m: [32mServer is listening on port 5000[39m
+2025-05-19 10:53:01:531 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 10:53:32:5332 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 10:53:32:5332 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 10:56:06:566 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 10:56:06:566 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 10:57:49:5749 [32minfo[39m: [32mGET /api-docs[39m
+2025-05-19 10:57:49:5749 [32minfo[39m: [32mGET /api-docs/[39m
+2025-05-19 10:57:49:5749 [32minfo[39m: [32mGET /api-docs/swagger-ui.css[39m
+2025-05-19 10:57:49:5749 [32minfo[39m: [32mGET /api-docs/swagger-ui-bundle.js[39m
+2025-05-19 10:57:49:5749 [32minfo[39m: [32mGET /api-docs/swagger-ui-standalone-preset.js[39m
+2025-05-19 10:57:49:5749 [32minfo[39m: [32mGET /api-docs/swagger-ui-init.js[39m
+2025-05-19 10:57:49:5749 [32minfo[39m: [32mGET /api-docs/favicon-32x32.png[39m
+2025-05-19 11:26:35:2635 [32minfo[39m: [32mPOST /auth/register[39m
+2025-05-19 11:27:53:2753 [32minfo[39m: [32mPOST /auth/register[39m
+2025-05-19 11:32:00:320 [32minfo[39m: [32mPOST /auth/login[39m
+2025-05-19 11:33:03:333 [32minfo[39m: [32mPOST /auth/register[39m
+2025-05-19 11:33:56:3356 [32minfo[39m: [32mPOST /auth/register[39m
+2025-05-19 11:37:10:3710 [32minfo[39m: [32mGET /users/me[39m
+2025-05-19 11:49:04:494 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 11:49:04:494 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:00:14:014 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:00:14:014 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:01:47:147 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:01:47:147 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:02:32:232 [32minfo[39m: [32mReceived shutdown signal, closing server...[39m
+2025-05-19 12:03:36:336 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:03:36:336 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:03:41:341 [32minfo[39m: [32mGET /api-docs/[39m
+2025-05-19 12:03:41:341 [32minfo[39m: [32mGET /api-docs/swagger-ui.css[39m
+2025-05-19 12:03:41:341 [32minfo[39m: [32mGET /api-docs/swagger-ui-bundle.js[39m
+2025-05-19 12:03:41:341 [32minfo[39m: [32mGET /api-docs/swagger-ui-standalone-preset.js[39m
+2025-05-19 12:03:41:341 [32minfo[39m: [32mGET /api-docs/swagger-ui-init.js[39m
+2025-05-19 12:03:41:341 [32minfo[39m: [32mGET /api-docs/favicon-32x32.png[39m
+2025-05-19 12:10:44:1044 [32minfo[39m: [32mPOST /auth/login[39m
+2025-05-19 12:11:13:1113 [32minfo[39m: [32mGET /users/me[39m
+2025-05-19 12:11:40:1140 [32minfo[39m: [32mPOST /auth/login[39m
+2025-05-19 12:12:15:1215 [32minfo[39m: [32mPOST /auth/login[39m
+2025-05-19 12:13:25:1325 [32minfo[39m: [32mGET /users/me[39m
+2025-05-19 12:13:41:1341 [32minfo[39m: [32mPOST /auth/login[39m
+2025-05-19 12:13:55:1355 [32minfo[39m: [32mGET /users/me[39m
+2025-05-19 12:20:03:203 [32minfo[39m: [32mPOST /auth/login[39m
+2025-05-19 12:21:25:2125 [32minfo[39m: [32mGET /api-docs/[39m
+2025-05-19 12:21:25:2125 [32minfo[39m: [32mGET /api-docs/swagger-ui.css[39m
+2025-05-19 12:21:25:2125 [32minfo[39m: [32mGET /api-docs/swagger-ui-bundle.js[39m
+2025-05-19 12:21:25:2125 [32minfo[39m: [32mGET /api-docs/swagger-ui-standalone-preset.js[39m
+2025-05-19 12:21:25:2125 [32minfo[39m: [32mGET /api-docs/swagger-ui-init.js[39m
+2025-05-19 12:21:25:2125 [32minfo[39m: [32mGET /api-docs/favicon-32x32.png[39m
+2025-05-19 12:22:10:2210 [32minfo[39m: [32mPOST /auth/login[39m
+2025-05-19 12:22:44:2244 [32minfo[39m: [32mGET /users/me[39m
+2025-05-19 12:24:18:2418 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:24:18:2418 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:24:29:2429 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:24:29:2429 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:24:36:2436 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:24:36:2436 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:24:41:2441 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:24:41:2441 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:24:45:2445 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:24:45:2445 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:24:51:2451 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:24:51:2451 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:24:56:2456 [32minfo[39m: [32mGET /users/me[39m
+2025-05-19 12:31:40:3140 [32minfo[39m: [32mPOST /auth/login[39m
+2025-05-19 12:32:07:327 [32minfo[39m: [32mGET /users/me[39m
+2025-05-19 12:35:53:3553 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:35:53:3553 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:43:24:4324 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:43:24:4324 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:43:37:4337 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:43:37:4337 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:43:42:4342 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:43:42:4342 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:43:44:4344 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:43:44:4344 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:43:49:4349 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:43:49:4349 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:44:59:4459 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:44:59:4459 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:47:15:4715 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:47:15:4715 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:47:38:4738 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:47:38:4738 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:47:49:4749 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:47:49:4749 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:47:56:4756 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:47:56:4756 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:48:26:4826 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:48:26:4826 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:48:59:4859 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:48:59:4859 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:50:22:5022 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:50:22:5022 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:52:03:523 [32minfo[39m: [32mPOST /auth/login[39m
+2025-05-19 12:52:20:5220 [32minfo[39m: [32mGET /users/me[39m
+2025-05-19 12:53:06:536 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:53:06:536 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:53:09:539 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:53:09:539 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:53:45:5345 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:53:45:5345 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:53:51:5351 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:53:51:5351 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:53:56:5356 [32minfo[39m: [32mGET /users/me[39m
+2025-05-19 12:54:18:5418 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:54:18:5418 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:54:24:5424 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:54:24:5424 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:54:28:5428 [32minfo[39m: [32mGET /users/me[39m
+2025-05-19 12:54:42:5442 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:54:42:5442 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:54:46:5446 [32minfo[39m: [32mGET /users/me[39m
+2025-05-19 12:59:30:5930 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:59:30:5930 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:59:32:5932 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:59:32:5932 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 12:59:43:5943 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 12:59:43:5943 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 13:01:06:16 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 13:01:06:16 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 13:01:08:18 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 13:01:08:18 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 13:01:23:123 [32minfo[39m: [32mPOST /auth/login[39m
+2025-05-19 13:01:35:135 [32minfo[39m: [32mPOST /auth/login[39m
+2025-05-19 13:02:15:215 [32minfo[39m: [32mGET /users/me[39m
+2025-05-19 13:04:12:412 [32minfo[39m: [32mPOST /auth/login[39m
+2025-05-19 13:07:17:717 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 13:07:17:717 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 13:07:45:745 [32minfo[39m: [32mPOST /auth/logout[39m
+2025-05-19 13:16:49:1649 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 13:16:49:1649 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 13:17:03:173 [32minfo[39m: [32mPOST /auth/logout[39m
+2025-05-19 14:15:10:1510 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 14:15:10:1510 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 14:15:13:1513 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 14:15:13:1513 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 14:15:39:1539 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 14:15:39:1539 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 14:16:37:1637 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 14:16:37:1637 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 14:17:35:1735 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 14:17:35:1735 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 14:17:46:1746 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 14:17:46:1746 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 14:18:50:1850 [32minfo[39m: [32mPOST /auth/login[39m
+2025-05-19 14:19:50:1950 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 14:19:50:1950 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 14:19:54:1954 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 14:19:54:1954 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 14:20:08:208 [32minfo[39m: [32mPOST /auth/login[39m
+2025-05-19 14:20:39:2039 [32minfo[39m: [32mGET /users/me[39m
+2025-05-19 14:21:06:216 [32minfo[39m: [32mGET /users/me[39m
+2025-05-19 14:21:55:2155 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 14:21:55:2155 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 14:25:06:256 [32minfo[39m: [32mGET /users/search/test[39m
+2025-05-19 14:27:32:2732 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 14:27:32:2732 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 14:27:51:2751 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 14:27:51:2751 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 14:30:46:3046 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 14:30:46:3046 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 14:31:04:314 [32minfo[39m: [32mPOST /auth/login[39m
+2025-05-19 14:31:34:3134 [32minfo[39m: [32mGET /users/me[39m
+2025-05-19 14:32:05:325 [32minfo[39m: [32mGET /users/me[39m
+2025-05-19 14:34:45:3445 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 14:34:45:3445 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 14:34:58:3458 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 14:34:58:3458 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 14:35:03:353 [32minfo[39m: [32mGET /users/me[39m
+2025-05-19 14:35:30:3530 [32minfo[39m: [32mPOST /auth/logout[39m
+2025-05-19 14:35:38:3538 [32minfo[39m: [32mPOST /auth/login[39m
+2025-05-19 14:36:10:3610 [32minfo[39m: [32mGET /users/me[39m
+2025-05-19 14:51:22:5122 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 14:51:22:5122 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 14:51:24:5124 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 14:51:24:5124 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 14:51:27:5127 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 14:51:27:5127 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 14:51:59:5159 [32minfo[39m: [32mGET /users/me[39m
+2025-05-19 14:52:17:5217 [32minfo[39m: [32mGET /users/682ac813d9288723d37f8015[39m
+2025-05-19 14:53:13:5313 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 14:53:13:5313 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 14:53:25:5325 [32minfo[39m: [32mGET /users/search/test[39m
+2025-05-19 17:29:44:2944 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 17:29:44:2944 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 17:29:49:2949 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 17:29:49:2949 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 17:29:51:2951 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 17:29:51:2951 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 17:30:01:301 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 17:30:01:301 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 17:30:05:305 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 17:30:05:305 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 17:30:07:307 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 17:30:07:307 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 17:30:11:3011 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 17:30:11:3011 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-19 17:30:22:3022 [32minfo[39m: [32mGET /api-docs/[39m
+2025-05-19 17:30:22:3022 [32minfo[39m: [32mGET /api-docs/swagger-ui.css[39m
+2025-05-19 17:30:22:3022 [32minfo[39m: [32mGET /api-docs/swagger-ui-bundle.js[39m
+2025-05-19 17:30:22:3022 [32minfo[39m: [32mGET /api-docs/swagger-ui-standalone-preset.js[39m
+2025-05-19 17:30:22:3022 [32minfo[39m: [32mGET /api-docs/swagger-ui-init.js[39m
+2025-05-19 17:30:22:3022 [32minfo[39m: [32mGET /api-docs/favicon-32x32.png[39m
+2025-05-19 17:31:23:3123 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-19 17:31:23:3123 [32minfo[39m: [32mServer is listening on port 5001[39m

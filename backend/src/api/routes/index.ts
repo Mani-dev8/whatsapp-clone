@@ -8,5 +8,13 @@ export function registerRoutes(app: Application) {
   RegisterRoutes(app);
 
   // Serve Swagger UI
-  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerJson));
+  app.use(
+    '/api-docs',
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerJson, {
+      customCss: '.swagger-ui .topbar { display: none }',
+      customSiteTitle: 'Whatsapp Clone API Docs',
+      customfavIcon: "/assets/favicon.ico"
+    }),
+  );
 }

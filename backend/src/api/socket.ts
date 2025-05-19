@@ -6,6 +6,7 @@ import { Chat, ChatDocument } from './models/chatModel';
 import { User } from './models/userModel';
 import { UnauthorizedError } from '@/util/errorTypes';
 import { winstonLogger } from '@/util/logger';
+import { env } from './config/env';
 
 interface JwtPayload {
   userId: string;
@@ -42,7 +43,7 @@ export function initializeSocket(io: SocketIOServer) {
         throw new UnauthorizedError('No token provided');
       }
 
-      const jwtSecret = process.env.JWT_SECRET;
+      const jwtSecret = env.JWT_SECRET;
       if (!jwtSecret) {
         throw new Error('JWT_SECRET is not defined');
       }

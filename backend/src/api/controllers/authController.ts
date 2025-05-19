@@ -16,6 +16,7 @@ import {
   UnauthorizedError,
   NotFoundError,
 } from '@/util/errorTypes';
+import { env } from '../config/env';
 
 interface RegisterRequest {
   name: string;
@@ -75,9 +76,9 @@ export class AuthController extends Controller {
 
     // Generate JWT token
     const token = jwt.sign(
-      { userId: user._id.toHexString(), email: user.email, role: user.role },
-      process.env.JWT_SECRET || 'default_secret',
-      { expiresIn: process.env.JWT_EXPIRATION || '24h' } as jwt.SignOptions,
+      { _id: user._id.toHexString(), email: user.email, role: user.role },
+      env.JWT_SECRET || 'secret88',
+      { expiresIn: '24h' } as jwt.SignOptions,
     );
 
     return {
@@ -122,15 +123,13 @@ export class AuthController extends Controller {
     user.isOnline = true;
     user.lastSeen = new Date();
     await user.save();
-    const jwtSecret = process.env.JWT_SECRET;
-    if (!jwtSecret) {
-      throw new Error('JWT_SECRET is not defined in environment variables');
-    }
+    const jwtSecret = env.JWT_SECRET;
+
     // Generate JWT token
     const token = jwt.sign(
-      { userId: user._id.toHexString(), email: user.email, role: user.role },
+      { _id: user._id.toHexString(), email: user.email, role: user.role },
       jwtSecret,
-      { expiresIn: process.env.JWT_EXPIRATION || '24h' } as jwt.SignOptions,
+      { expiresIn: '24h' } as jwt.SignOptions,
     );
 
     return {
@@ -156,7 +155,7 @@ export class AuthController extends Controller {
     @Request() request: AuthenticatedRequest,
   ): Promise<{ message: string }> {
     const userId = request.user?._id;
-
+    console.info(request.user);
     if (!userId) {
       throw new UnauthorizedError('User not authenticated');
     }

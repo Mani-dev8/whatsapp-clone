@@ -5,6 +5,7 @@ import helmet from 'helmet';
 import { logger } from './api/middlewares/loggerMiddleware';
 import { errorHandler } from './api/middlewares/errorHandlerMiddleware';
 import { registerRoutes } from './api/routes';
+import { AuthenticatedRequest } from './api/middlewares/authMiddleware';
 
 const app: Application = express();
 
@@ -20,6 +21,7 @@ const limiter = rateLimit({
   standardHeaders: true,
   legacyHeaders: false,
 });
+
 app.use(limiter);
 
 // Request logging
@@ -27,6 +29,11 @@ app.use(logger);
 
 // Register TSOA routes and Swagger UI
 registerRoutes(app);
+
+app.use((req: AuthenticatedRequest, res, next) => {
+  console.log('App middleware request.user:', req.user);
+  next();
+});
 
 // Error handling (must be last)
 app.use(errorHandler);

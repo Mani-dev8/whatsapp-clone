@@ -24,7 +24,7 @@ async function startServer() {
     const server = http.createServer(app);
     const io = new SocketIOServer(server, {
       cors: {
-        origin: '*', // Adjust for production (e.g., your frontend URL)
+        origin: '*',
         methods: ['GET', 'POST'],
       },
     });

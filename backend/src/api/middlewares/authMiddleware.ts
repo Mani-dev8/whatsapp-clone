@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
 import { UnauthorizedError, ForbiddenError } from '@/util/errorTypes';
 import { UserDocument } from '../models/userModel';
+import { env } from '../config/env';
 
 export interface AuthenticatedRequest extends Request {
   user?: UserDocument;
@@ -24,12 +25,11 @@ export async function expressAuthentication(
   }
 
   const token = extractTokenFromRequest(request);
-
   if (!token) {
     throw new UnauthorizedError('No token provided');
   }
 
-  const jwtSecret = process.env.JWT_SECRET;
+  const jwtSecret = env.JWT_SECRET;
   if (!jwtSecret) {
     throw new Error('JWT_SECRET is not defined in environment variables');
   }
@@ -56,7 +56,6 @@ export async function expressAuthentication(
     } else if (error instanceof jwt.JsonWebTokenError) {
       throw new UnauthorizedError('Invalid token');
     }
-
     throw new UnauthorizedError(
       'Authentication failed: ' +
         (error instanceof Error ? error.message : 'Unknown error'),
@@ -66,10 +65,8 @@ export async function expressAuthentication(
 
 function extractTokenFromRequest(request: Request): string | null {
   const authHeader = request.headers.authorization;
-
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return null;
   }
-
   return authHeader.substring(7);
 }
