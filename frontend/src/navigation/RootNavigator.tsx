@@ -1,26 +1,35 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import ChatScreen from '../screens/ChatScreen';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import LoginScreen from '../screens/LoginScreen';
+import RegisterScreen from '../screens/RegisterScreen';
 import HomeScreen from '../screens/HomeScreen';
-
-type Props = {};
+import ChatScreen from '../screens/ChatScreen';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store';
 
 const Stack = createNativeStackNavigator();
-const RootNavigator = (props: Props) => {
+
+const AppNavigator = () => {
+  const token = useSelector((state: RootState) => state.auth.token);
+
   return (
-    <>
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
-          }}>
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Chat" component={ChatScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </>
-  );ad
+    <NavigationContainer>
+      <Stack.Navigator>
+        {token ? (
+          <>
+            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="Chat" component={ChatScreen} />
+          </>
+        ) : (
+          <>
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="Register" component={RegisterScreen} />
+          </>
+        )}
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 };
 
-export default RootNavigator;
+export default AppNavigator;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Switch, KeyboardAvoidingView, Platform } from 'react-native';
-import { Entypo } from '@expo/vector-icons';
+import  Entypo  from 'react-native-vector-icons/Entypo';
+import { toast } from 'sonner-native';
 import tw from 'twrnc';
 
 export default function HomeScreen() {
