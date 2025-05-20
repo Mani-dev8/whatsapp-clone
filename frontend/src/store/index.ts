@@ -2,20 +2,38 @@ import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { apiSlice, UserProfileResponse } from './apiSlice';
 import { persistReducer, persistStore } from 'redux-persist';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { MMKV } from 'react-native-mmkv';
 import { combineReducers } from 'redux';
+
+const mmkv = new MMKV();
 
 const persistConfig = {
   key: 'root',
-  storage: AsyncStorage,
-  whitelist: ['auth'], // Persist auth slice
+  storage: {
+    setItem: (key: string, value: string) => {
+      mmkv.set(key, value);
+      return Promise.resolve();
+    },
+    getItem: (key: string) => {
+      const value = mmkv.getString(key);
+      return Promise.resolve(value || '');
+    },
+    removeItem: (key: string) => {
+      mmkv.delete(key);
+      return Promise.resolve();
+    },
+  },
+  whitelist: ['auth'],
 };
 
 const authReducer = persistReducer(
   persistConfig,
   combineReducers({
     [apiSlice.reducerPath]: apiSlice.reducer,
-    auth: (state: { token: string | null; user: UserProfileResponse | null } = { token: null, user: null }, action: any) => {
+    auth: (
+      state: { token: string | null; user: UserProfileResponse | null } = { token: null, user: null },
+      action: any,
+    ) => {
       switch (action.type) {
         case 'auth/login':
           return { token: action.payload.token, user: action.payload.user };
@@ -28,18 +46,16 @@ const authReducer = persistReducer(
   }),
 );
 
-const store = configureStore({
+export const store = configureStore({
   reducer: authReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false, // Disable for AsyncStorage
+      serializableCheck: false,
     }).concat(apiSlice.middleware),
 });
 
 setupListeners(store.dispatch);
 
-const persistor = persistStore(store);
+export const persistor = persistStore(store);
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-
-export {store, persistor};

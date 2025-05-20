@@ -1,102 +1,107 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Switch, KeyboardAvoidingView, Platform } from 'react-native';
-import  Entypo  from 'react-native-vector-icons/Entypo';
-import { toast } from 'sonner-native';
+import { View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
+import { useForm, Controller } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import tw from 'twrnc';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { toast } from 'sonner-native';
+import { LoginFormData, loginSchema } from '../utils/validation';
 
-export default function HomeScreen() {
-    const [isDarkMode, setIsDarkMode] = useState(false);
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [email, setEmail] = useState('');
-    const [selectedCountry, setSelectedCountry] = useState('Nigeria');
-    const [countryCode, setCountryCode] = useState('+234');
+export default function LoginScreen() {
+    const {
+        control,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<LoginFormData>({
+        resolver: zodResolver(loginSchema),
+        defaultValues: {
+            email: '',
+            password: '',
+        },
+    });
 
-    const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
-
-    const handleNext = () => {
-        if (!phoneNumber.trim() || !email.trim()) {
-            toast.error('Please fill in all fields');
-            return;
-        }
-        // Handle verification logic here
-        toast.success('Verification code sent!');
+    const onSubmit = (data: LoginFormData) => {
+        // Here you would typically make an API call to authenticate
+        console.log(data);
+        toast.success('Login successful!');
     };
 
     return (
         <KeyboardAvoidingView
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-            style={tw`flex-1 ${isDarkMode ? 'bg-gray-900' : 'bg-white'}`}
+            style={tw`flex-1 bg-[#ffffff]`}
         >
-            <View style={tw`flex-1 px-4 pt-12`}>
-                {/* Header */}
-                <View style={tw`flex-row justify-between items-center mb-8`}>
-                    <Text style={tw`text-2xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                        Enter your phone number
-                    </Text>
-                    <Switch
-                        value={isDarkMode}
-                        onValueChange={toggleDarkMode}
-                        trackColor={{ false: '#767577', true: '#075E54' }}
-                        thumbColor={isDarkMode ? '#128C7E' : '#f4f3f4'}
-                    />
+            <View style={tw`flex-1 justify-center px-6`}>
+                {/* Logo and Welcome Text */}
+                <View style={tw`items-center mb-8`}>
+                    <MaterialCommunityIcons name="whatsapp" size={80} color="#25D366" />
+                    <Text style={tw`text-2xl font-bold mt-4 text-gray-800`}>Welcome back</Text>
+                    <Text style={tw`text-gray-600 mt-2`}>Sign in to your account</Text>
                 </View>
 
-                {/* Description */}
-                <Text style={tw`text-base mb-8 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                    WhatsApp will need to verify your phone number and email. Carrier charges may apply.
-                </Text>
+                {/* Form */}
+                <View style={tw`space-y-4`}>
+                    <View>
+                        <Controller
+                            control={control}
+                            name="email"
+                            render={({ field: { onChange, value } }) => (
+                                <TextInput
+                                    placeholder="Email"
+                                    value={value}
+                                    onChangeText={onChange}
+                                    style={tw`bg-gray-50 p-4 rounded-lg border border-gray-200`}
+                                    keyboardType="email-address"
+                                    autoCapitalize="none"
+                                />
+                            )}
+                        />
+                        {errors.email && (
+                            <Text style={tw`text-red-500 text-sm mt-1`}>{errors.email.message}</Text>
+                        )}
+                    </View>
 
-                {/* Country Selector */}
-                <TouchableOpacity
-                    style={tw`flex-row justify-between items-center py-2 border-b ${isDarkMode ? 'border-gray-700' : 'border-gray-300'}`}
-                >
-                    <Text style={tw`text-lg ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                        {selectedCountry}
-                    </Text>
-                    <Entypo
-                        name="chevron-down"
-                        size={24}
-                        color={isDarkMode ? '#fff' : '#000'}
-                    />
-                </TouchableOpacity>
+                    <View>
+                        <Controller
+                            control={control}
+                            name="password"
+                            render={({ field: { onChange, value } }) => (
+                                <TextInput
+                                    placeholder="Password"
+                                    value={value}
+                                    onChangeText={onChange}
+                                    secureTextEntry
+                                    style={tw`bg-gray-50 p-4 rounded-lg border border-gray-200`}
+                                />
+                            )}
+                        />
+                        {errors.password && (
+                            <Text style={tw`text-red-500 text-sm mt-1`}>{errors.password.message}</Text>
+                        )}
+                    </View>
 
-                {/* Phone Input */}
-                <View style={tw`flex-row mt-4`}>
-                    <TextInput
-                        style={tw`flex-2 text-lg border-b mr-2 ${isDarkMode ? 'text-white border-gray-700' : 'text-gray-900 border-gray-300'}`}
-                        value={countryCode}
-                        editable={false}
-                    />
-                    <TextInput
-                        style={tw`flex-5 text-lg border-b ${isDarkMode ? 'text-white border-gray-700' : 'text-gray-900 border-gray-300'}`}
-                        placeholder="Phone number"
-                        placeholderTextColor={isDarkMode ? '#9CA3AF' : '#6B7280'}
-                        keyboardType="phone-pad"
-                        value={phoneNumber}
-                        onChangeText={setPhoneNumber}
-                    />
+                    <TouchableOpacity
+                        style={tw`bg-[#25D366] p-4 rounded-lg mt-4`}
+                        onPress={handleSubmit(onSubmit)}
+                    >
+                        <Text style={tw`text-white text-center font-semibold text-lg`}>Sign In</Text>
+                    </TouchableOpacity>
                 </View>
 
-                {/* Email Input */}
-                <TextInput
-                    style={tw`text-lg border-b mt-4 ${isDarkMode ? 'text-white border-gray-700' : 'text-gray-900 border-gray-300'}`}
-                    placeholder="Email address"
-                    placeholderTextColor={isDarkMode ? '#9CA3AF' : '#6B7280'}
-                    keyboardType="email-address"
-                    autoCapitalize="none"
-                    value={email}
-                    onChangeText={setEmail}
-                />
+                {/* Additional Options */}
+                <View style={tw`mt-6`}>
+                    <TouchableOpacity>
+                        <Text style={tw`text-[#25D366] text-center font-semibold`}>
+                            Forgot Password?
+                        </Text>
+                    </TouchableOpacity>
 
-                {/* Next Button */}
-                <TouchableOpacity
-                    style={tw`mt-8 bg-[#128C7E] py-4 rounded-full`}
-                    onPress={handleNext}
-                >
-                    <Text style={tw`text-white text-center text-lg font-semibold`}>
-                        Next
-                    </Text>
-                </TouchableOpacity>
+                    <View style={tw`flex-row justify-center mt-4`}>
+                        <Text style={tw`text-gray-600`}>Don't have an account? </Text>
+                        <TouchableOpacity>
+                            <Text style={tw`text-[#25D366] font-semibold`}>Sign Up</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
             </View>
         </KeyboardAvoidingView>
     );

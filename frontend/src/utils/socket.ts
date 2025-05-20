@@ -1,21 +1,28 @@
-import { io, Socket } from 'socket.io-client';
-import { storage, STORAGE_KEYS } from './storage';
+import {io, Socket} from 'socket.io-client';
+import {storageUtils, STORAGE_KEYS} from './storage';
 
 let socket: Socket | null = null;
 
 export const initSocket = async () => {
-  const token = await storage.getItem(STORAGE_KEYS.TOKEN);
+  const token = storageUtils.getItem(STORAGE_KEYS.TOKEN);
   if (!token) return;
 
-  socket = io('http://localhost:5001', {
-    auth: { token },
+  socket = io('http://localhost:5000', {
+    auth: {token},
+    reconnectionDelay: 1000,
+    reconnection: true,
+    reconnectionAttempts: 10,
+    transports: ['websocket'],
+    agent: false,
+    upgrade: false,
+    rejectUnauthorized: false,
   });
 
   socket.on('connect', () => {
     console.log('Socket.IO connected');
   });
 
-  socket.on('connect_error', (err) => {
+  socket.on('connect_error', err => {
     console.error('Socket.IO connect error:', err.message);
   });
 

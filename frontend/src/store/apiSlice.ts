@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { storage, STORAGE_KEYS } from '../utils/storage';
+import { storageUtils, STORAGE_KEYS } from '../utils/storage';
 
-export interface UserProfileResponse {
+interface UserProfileResponse {
   id: string;
   name: string;
   email: string;
@@ -50,9 +50,9 @@ interface CreateMessageRequest {
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:5001',
-    prepareHeaders: async (headers) => {
-      const token = await storage.getItem(STORAGE_KEYS.TOKEN);
+    baseUrl: 'http://192.168.230.81:5000/',
+    prepareHeaders: (headers) => {
+      const token = storageUtils.getItem(STORAGE_KEYS.TOKEN);
       if (token) {
         headers.set('Authorization', `Bearer ${token}`);
       }
@@ -61,7 +61,6 @@ export const apiSlice = createApi({
     },
   }),
   endpoints: (builder) => ({
-    // Auth Routes
     register: builder.mutation<AuthResponse, RegisterRequest>({
       query: (body) => ({
         url: '/auth/register',
@@ -82,8 +81,6 @@ export const apiSlice = createApi({
         method: 'POST',
       }),
     }),
-
-    // User Routes
     getCurrentUser: builder.query<UserProfileResponse, void>({
       query: () => '/users/me',
     }),
@@ -93,8 +90,6 @@ export const apiSlice = createApi({
     searchUsers: builder.query<UserProfileResponse[], string>({
       query: (query) => `/users/search/${encodeURIComponent(query)}`,
     }),
-
-    // Message Routes
     createMessage: builder.mutation<MessageResponse, CreateMessageRequest>({
       query: (body) => ({
         url: '/messages',

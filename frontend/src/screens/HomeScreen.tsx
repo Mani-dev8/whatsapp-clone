@@ -1,67 +1,47 @@
 import React from 'react';
-import { View, FlatList, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import ChatListItem from '../components/ChatListItem';
+import { View, Text, Button, FlatList } from 'react-native';
+import { useGetCurrentUserQuery, useSearchUsersQuery } from '../store/apiSlice';
+import { useDispatch } from 'react-redux';
+import { storageUtils, STORAGE_KEYS } from '../utils/storage';
+import { disconnectSocket } from '../utils/socket';
 
-const DUMMY_CHATS = [
-  {
-    id: '1',
-    name: 'John Doe',
-    lastMessage: 'Hey, how are you doing?',
-    time: '9:30 AM',
-    avatar: 'https://api.a0.dev/assets/image?text=profile%20picture%20of%20a%20young%20professional%20man&seed=1',
-    unreadCount: 2,
-  },
-  {
-    id: '2',
-    name: 'Jane Smith',
-    lastMessage: 'The meeting is scheduled for tomorrow',
-    time: 'Yesterday',
-    avatar: 'https://api.a0.dev/assets/image?text=profile%20picture%20of%20a%20young%20professional%20woman&seed=2',
-    unreadCount: 1,
-  },
-  {
-    id: '3',
-    name: 'Developer Group',
-    lastMessage: 'Alice: The new update is live!',
-    time: 'Yesterday',
-    avatar: 'https://api.a0.dev/assets/image?text=group%20of%20developers%20icon&seed=3',
-    unreadCount: 5,
-  },
-];
+const HomeScreen = ({ navigation }: any) => {
+  const { data: user, error, isLoading } = useGetCurrentUserQuery();
+  const { data: users } = useSearchUsersQuery('te');
+  const dispatch = useDispatch();
 
-export default function HomeScreen() {
-  const navigation = useNavigation();
-
-  const handleChatPress = (chatId: string) => {
-    navigation.navigate('Chat', { chatId });
+  const handleLogout = async () => {
+    try {
+      storageUtils.removeItem(STORAGE_KEYS.TOKEN);
+      storageUtils.removeItem(STORAGE_KEYS.USER);
+      dispatch({ type: 'auth/logout' });
+      disconnectSocket();
+      navigation.navigate('Login');
+    } catch (err) {
+      console.error('Logout error:', err);
+    }
   };
 
+  if (isLoading) return <Text>Loading...</Text>;
+  if (error) return <Text>Error: {JSON.stringify(error)}</Text>;
+
   return (
-    <View style={styles.container}>
+    <View>
+      <Text>Welcome, {user?.name}</Text>
       <FlatList
-        data={DUMMY_CHATS}
+        data={users}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <ChatListItem
-            {...item}
-            onPress={handleChatPress}
-          />
+          <Text
+            onPress={() => navigation.navigate('Chat', { chatId: item.id })}
+          >
+            {item.name}
+          </Text>
         )}
-        ItemSeparatorComponent={() => <View style={styles.separator} />}
       />
+      <Button title="Logout" onPress={handleLogout} />
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-  },
-  separator: {
-    height: 1,
-    backgroundColor: '#E8E8E8',
-    marginLeft: 82,
-  },
-});
+export default HomeScreen;
