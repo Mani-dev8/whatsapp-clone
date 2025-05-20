@@ -17,15 +17,29 @@ module.exports = {
         Black: ['Roboto-Black', 'sans-serif'], //900
       },
       colors: {
-        
+        app: {
+          primary: '#128C7E',
+          secondary: '#EAFEFF',
+        },
+        screen: {
+          primary: '#FEFEFE',
+          secondary: '#EAFEFF',
+          tertiary: '#F0F0F0',
+        },
+        placeholder: '#a1a1aa',
+        highlight: {
+          yellow: '#FFD561',
+          blue: '#E7FEFF',
+          grey: '#DFDFDF',
+        },
       },
     },
   },
   plugins: [
-      plugin(({addUtilities}) => {
-        addUtilities({
-          'app-header-title-style': 'text-lg font-Regular',
-        });
-      }),
+    plugin(({addUtilities}) => {
+      addUtilities({
+        'app-header-title-style': 'text-lg font-Regular',
+      });
+    }),
   ],
 };

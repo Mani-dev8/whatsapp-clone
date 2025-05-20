@@ -7,7 +7,7 @@ export const initSocket = async () => {
   const token = storageUtils.getItem(STORAGE_KEYS.TOKEN);
   if (!token) return;
 
-  socket = io('http://localhost:5000', {
+  socket = io('http://192.168.1.146:5001', {
     auth: {token},
     reconnectionDelay: 1000,
     reconnection: true,

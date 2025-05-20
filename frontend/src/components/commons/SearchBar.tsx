@@ -1,0 +1,25 @@
+import {View, Text, TextInput, TextInputProps} from 'react-native';
+import React from 'react';
+import tw from '../../libs/tailwind';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
+type Props = TextInputProps & {};
+
+const SearchBar = ({...props}: Props) => {
+  return (
+    <View style={tw`px-4 py-2 bg-white`}>
+      <View
+        style={tw`bg-gray-100 rounded-full px-4 py-1 flex-row items-center`}>
+        <Ionicons name="search" size={20} color="gray" />
+        <TextInput
+          style={tw`ml-2 flex-1 text-zinc-900`}
+          placeholder="Search"
+          placeholderTextColor={'#999'}
+          {...props}
+        />
+      </View>
+    </View>
+  );
+};
+
+export default SearchBar;

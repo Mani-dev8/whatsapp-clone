@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   FlatList,
   KeyboardAvoidingView,
@@ -10,16 +10,17 @@ import {
   View,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import ChatBubble from '../components/chat-screen/ChatBubble';
 
 // Dummy messages for demonstration
 const generateDummyMessages = (count: number, startIndex: number = 0) => {
-  return Array.from({ length: count }, (_, i) => ({
+  return Array.from({length: count}, (_, i) => ({
     id: `${startIndex + i}`,
     text: `This is message number ${startIndex + i}`,
     isSender: Math.random() > 0.5,
-    timestamp: new Date(Date.now() - (i * 60000)).toLocaleTimeString([], {
+    timestamp: new Date(Date.now() - i * 60000).toLocaleTimeString([], {
       hour: '2-digit',
-      minute: '2-digit'
+      minute: '2-digit',
     }),
   }));
 };
@@ -50,7 +51,7 @@ export default function ChatDetailScreen() {
       isSender: true,
       timestamp: new Date().toLocaleTimeString([], {
         hour: '2-digit',
-        minute: '2-digit'
+        minute: '2-digit',
       }),
     };
 
@@ -58,22 +59,18 @@ export default function ChatDetailScreen() {
     setInputText('');
   };
 
-  const renderMessage = ({ item }) => (
-    <View style={[
-      styles.messageContainer,
-      item.isSender ? styles.senderMessage : styles.receiverMessage
-    ]}>
+  const renderMessage = ({item}) => (
+    <ChatBubble isOwnMessage={item.isSender}>
       <Text style={styles.messageText}>{item.text}</Text>
       <Text style={styles.timestamp}>{item.timestamp}</Text>
-    </View>
+    </ChatBubble>
   );
 
   return (
     <KeyboardAvoidingView
       style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
-    >
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}>
       <FlatList
         inverted
         data={messages}
@@ -92,10 +89,7 @@ export default function ChatDetailScreen() {
           placeholder="Type a message..."
           multiline
         />
-        <TouchableOpacity
-          style={styles.sendButton}
-          onPress={sendMessage}
-        >
+        <TouchableOpacity style={styles.sendButton} onPress={sendMessage}>
           <Ionicons name="send" size={24} color="white" />
         </TouchableOpacity>
       </View>

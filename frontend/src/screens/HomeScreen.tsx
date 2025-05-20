@@ -1,47 +1,64 @@
-import React from 'react';
-import { View, Text, Button, FlatList } from 'react-native';
-import { useGetCurrentUserQuery, useSearchUsersQuery } from '../store/apiSlice';
-import { useDispatch } from 'react-redux';
-import { storageUtils, STORAGE_KEYS } from '../utils/storage';
-import { disconnectSocket } from '../utils/socket';
+import {useFocusEffect} from '@react-navigation/native';
+import React, {useCallback, useEffect, useState} from 'react';
+import {FlatList, Text, TextInput, View} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import tw from 'twrnc';
+import HomeHeader from '../components/home-screen/HomeHeader';
+import TabBar from '../components/commons/TabBar';
+import {statusBarWithPrimaryBg} from '../utils/helper';
+import SearchBar from '../components/commons/SearchBar';
+import {useLazySearchUsersQuery} from '../store/apiSlice';
+import SearchListItem from '../components/commons/SearchListItem';
+import ChatListItem from '../components/commons/ChatListItem';
 
-const HomeScreen = ({ navigation }: any) => {
-  const { data: user, error, isLoading } = useGetCurrentUserQuery();
-  const { data: users } = useSearchUsersQuery('te');
-  const dispatch = useDispatch();
+export default function HomeScreen({navigation}: any) {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeTab, setActiveTab] = useState('Chats');
 
-  const handleLogout = async () => {
-    try {
-      storageUtils.removeItem(STORAGE_KEYS.TOKEN);
-      storageUtils.removeItem(STORAGE_KEYS.USER);
-      dispatch({ type: 'auth/logout' });
-      disconnectSocket();
-      navigation.navigate('Login');
-    } catch (err) {
-      console.error('Logout error:', err);
-    }
-  };
+  const [triggerSearch, {data: searchResults, isFetching}] =
+    useLazySearchUsersQuery();
 
-  if (isLoading) return <Text>Loading...</Text>;
-  if (error) return <Text>Error: {JSON.stringify(error)}</Text>;
+  useEffect(() => {
+    const delayDebounce = setTimeout(() => {
+      if (searchQuery.trim()) {
+        triggerSearch(searchQuery.trim());
+      }
+    }, 400);
+    return () => clearTimeout(delayDebounce);
+  }, [searchQuery]);
+
+  useFocusEffect(
+    useCallback(() => {
+      statusBarWithPrimaryBg();
+      // return () => {
+      //   statusBarWithWhiteBg();
+      // };
+    }, []),
+  );
 
   return (
-    <View>
-      <Text>Welcome, {user?.name}</Text>
+    <SafeAreaView style={tw`flex-1 bg-white`}>
+      <HomeHeader />
+      <TabBar activeTab={activeTab} setActiveTab={setActiveTab} />
+      <SearchBar value={searchQuery} onChangeText={setSearchQuery} />
       <FlatList
-        data={users}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <Text
-            onPress={() => navigation.navigate('Chat', { chatId: item.id })}
-          >
-            {item.name}
-          </Text>
-        )}
+        data={searchQuery ? searchResults : []}
+        keyExtractor={item => item.id}
+        renderItem={({item}) =>
+          searchQuery ? (
+            <SearchListItem
+              user={item}
+              onPress={() => navigation.navigate('Chat', {userId: item.id})}
+            />
+          ) : (
+            <ChatListItem
+              chat={item}
+              onPress={() => navigation.navigate('Chat', {chatId: item.id})}
+            />
+          )
+        }
       />
-      <Button title="Logout" onPress={handleLogout} />
-    </View>
+    </SafeAreaView>
   );
-};
-
-export default HomeScreen;
+}
