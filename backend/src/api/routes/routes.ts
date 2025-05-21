@@ -8,6 +8,8 @@ import { UserController } from './../controllers/userController';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { MessageController } from './../controllers/messageController';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { ChatController } from './../controllers/chatController';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { AuthController } from './../controllers/authController';
 import { expressAuthentication } from './../middlewares/authMiddleware';
 // @ts-ignore - no great way to install types from subpackage
@@ -77,6 +79,27 @@ const models: TsoaRoute.Models = {
             "content": {"dataType":"string","required":true},
             "messageType": {"ref":"MessageType"},
             "mediaUrl": {"dataType":"string"},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ChatListResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "id": {"dataType":"string","required":true},
+            "name": {"dataType":"string","required":true},
+            "lastMessage": {"dataType":"string","required":true},
+            "time": {"dataType":"string","required":true},
+            "unreadCount": {"dataType":"double","required":true},
+            "avatar": {"dataType":"string","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "CreatePrivateChatRequest": {
+        "dataType": "refObject",
+        "properties": {
+            "participantId": {"dataType":"string","required":true},
         },
         "additionalProperties": false,
     },
@@ -372,6 +395,133 @@ export function RegisterRoutes(app: Router) {
 
               await templateService.apiHandler({
                 methodName: 'deleteMessage',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsChatController_getUserChats: Record<string, TsoaRoute.ParameterSchema> = {
+                request: {"in":"request","name":"request","required":true,"dataType":"object"},
+        };
+        app.get('/chats',
+            authenticateMiddleware([{"jwt":[]}]),
+            ...(fetchMiddlewares<RequestHandler>(ChatController)),
+            ...(fetchMiddlewares<RequestHandler>(ChatController.prototype.getUserChats)),
+
+            async function ChatController_getUserChats(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsChatController_getUserChats, request, response });
+
+                const controller = new ChatController();
+
+              await templateService.apiHandler({
+                methodName: 'getUserChats',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsChatController_getChatById: Record<string, TsoaRoute.ParameterSchema> = {
+                request: {"in":"request","name":"request","required":true,"dataType":"object"},
+                chatId: {"in":"path","name":"chatId","required":true,"dataType":"string"},
+        };
+        app.get('/chats/:chatId',
+            authenticateMiddleware([{"jwt":[]}]),
+            ...(fetchMiddlewares<RequestHandler>(ChatController)),
+            ...(fetchMiddlewares<RequestHandler>(ChatController.prototype.getChatById)),
+
+            async function ChatController_getChatById(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsChatController_getChatById, request, response });
+
+                const controller = new ChatController();
+
+              await templateService.apiHandler({
+                methodName: 'getChatById',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsChatController_createPrivateChat: Record<string, TsoaRoute.ParameterSchema> = {
+                request: {"in":"request","name":"request","required":true,"dataType":"object"},
+                requestBody: {"in":"body","name":"requestBody","required":true,"ref":"CreatePrivateChatRequest"},
+        };
+        app.post('/chats/private',
+            authenticateMiddleware([{"jwt":[]}]),
+            ...(fetchMiddlewares<RequestHandler>(ChatController)),
+            ...(fetchMiddlewares<RequestHandler>(ChatController.prototype.createPrivateChat)),
+
+            async function ChatController_createPrivateChat(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsChatController_createPrivateChat, request, response });
+
+                const controller = new ChatController();
+
+              await templateService.apiHandler({
+                methodName: 'createPrivateChat',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsChatController_deleteChat: Record<string, TsoaRoute.ParameterSchema> = {
+                request: {"in":"request","name":"request","required":true,"dataType":"object"},
+                chatId: {"in":"path","name":"chatId","required":true,"dataType":"string"},
+        };
+        app.delete('/chats/:chatId',
+            authenticateMiddleware([{"jwt":[]}]),
+            ...(fetchMiddlewares<RequestHandler>(ChatController)),
+            ...(fetchMiddlewares<RequestHandler>(ChatController.prototype.deleteChat)),
+
+            async function ChatController_deleteChat(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsChatController_deleteChat, request, response });
+
+                const controller = new ChatController();
+
+              await templateService.apiHandler({
+                methodName: 'deleteChat',
                 controller,
                 response,
                 next,

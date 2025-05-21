@@ -1,4 +1,3 @@
-// src/api/controllers/messageController.ts
 import {
   BadRequestError,
   ForbiddenError,
