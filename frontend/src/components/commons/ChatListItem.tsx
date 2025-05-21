@@ -1,19 +1,19 @@
 import React from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import tw from 'twrnc';
-import {UserProfileResponse} from '../store/apiSlice';
+import { UserProfileResponse } from '../../store/apiSlice';
 
 type Props = {
   chat: UserProfileResponse;
   onPress: () => void;
 };
-export default function ChatListItem({chat, onPress}: Props) {
+export default function ChatListItem({ chat, onPress }: Props) {
   return (
     <TouchableOpacity
       onPress={onPress}
       style={tw`flex-row items-center p-3 border-b border-gray-100`}>
       <Image
-        source={{uri: chat.profilePicture}}
+        source={{ uri: chat.profilePicture }}
         style={tw`w-12 h-12 rounded-full`}
       />
       <View style={tw`flex-1 ml-3`}>

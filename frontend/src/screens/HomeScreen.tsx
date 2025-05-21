@@ -1,23 +1,36 @@
-import {useFocusEffect} from '@react-navigation/native';
-import React, {useCallback, useEffect, useState} from 'react';
-import {FlatList, Text, TextInput, View} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import { useFocusEffect } from '@react-navigation/native';
+import React, { useCallback, useEffect, useState } from 'react';
+import { FlatList, Text, TextInput, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import tw from 'twrnc';
 import HomeHeader from '../components/home-screen/HomeHeader';
 import TabBar from '../components/commons/TabBar';
-import {statusBarWithPrimaryBg} from '../utils/helper';
+import { statusBarWithPrimaryBg } from '../utils/helper';
 import SearchBar from '../components/commons/SearchBar';
-import {useLazySearchUsersQuery} from '../store/apiSlice';
+import { useCreatePrivateChatMutation, useLazySearchUsersQuery } from '../store/apiSlice';
 import SearchListItem from '../components/commons/SearchListItem';
 import ChatListItem from '../components/commons/ChatListItem';
+import { toast } from 'sonner-native';
 
-export default function HomeScreen({navigation}: any) {
+export default function HomeScreen({ navigation }: any) {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTab, setActiveTab] = useState('Chats');
 
-  const [triggerSearch, {data: searchResults, isFetching}] =
+  const [triggerSearch, { data: searchResults, isFetching }] =
     useLazySearchUsersQuery();
+
+  const [createChat] = useCreatePrivateChatMutation();
+
+  const startNewChat = async (userId: string) => {
+    try {
+      const chat = await createChat({ participantId: userId }).unwrap();
+      navigation.navigate('Chat', { chatId: chat.id, chatName: chat.name });
+    } catch (error) {
+      toast.error('Failed to start chat');
+      console.error('Create chat error:', error);
+    }
+  };
 
   useEffect(() => {
     const delayDebounce = setTimeout(() => {
@@ -45,16 +58,16 @@ export default function HomeScreen({navigation}: any) {
       <FlatList
         data={searchQuery ? searchResults : []}
         keyExtractor={item => item.id}
-        renderItem={({item}) =>
+        renderItem={({ item }) =>
           searchQuery ? (
             <SearchListItem
               user={item}
-              onPress={() => navigation.navigate('Chat', {userId: item.id})}
+              onPress={() => startNewChat(item.id)}
             />
           ) : (
             <ChatListItem
               chat={item}
-              onPress={() => navigation.navigate('Chat', {chatId: item.id})}
+              onPress={() => startNewChat(item.id)}
             />
           )
         }

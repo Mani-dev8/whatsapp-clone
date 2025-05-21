@@ -56,10 +56,18 @@ interface CreateMessageRequest {
   mediaUrl?: string;
 }
 
+interface UpdateMessageStatusRequest {
+  status: 'read' | 'delivered';
+}
+
+interface CreatePrivateChatRequest {
+  participantId: string;
+}
+
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://192.168.1.146:5001/',
+    baseUrl: 'http://192.168.122.81:5001/',
     prepareHeaders: headers => {
       const token = storageUtils.getItem(STORAGE_KEYS.TOKEN);
       if (token) {
@@ -107,6 +115,28 @@ export const apiSlice = createApi({
     searchUsers: builder.query<UserProfileResponse[], string>({
       query: query => `/users/search/${encodeURIComponent(query)}`,
     }),
+    getChats: builder.query<UserProfileResponse[], void>({
+      query: () => '/chats',
+    }),
+    getChatById: builder.query<UserProfileResponse, string>({
+      query: chatId => `/chats/${chatId}`,
+    }),
+    createPrivateChat: builder.mutation<
+      UserProfileResponse,
+      CreatePrivateChatRequest
+    >({
+      query: body => ({
+        url: '/chats/private',
+        method: 'POST',
+        body,
+      }),
+    }),
+    deleteChat: builder.mutation<{message: string}, string>({
+      query: chatId => ({
+        url: `/chats/${chatId}`,
+        method: 'DELETE',
+      }),
+    }),
     createMessage: builder.mutation<MessageResponse, CreateMessageRequest>({
       query: body => ({
         url: '/messages',
@@ -121,6 +151,16 @@ export const apiSlice = createApi({
       query: ({chatId, page = 1, limit = 50}) =>
         `/messages/chat/${chatId}?page=${page}&limit=${limit}`,
     }),
+    updateMessageStatus: builder.mutation<
+      MessageResponse,
+      {messageId: string; status: 'read' | 'delivered'}
+    >({
+      query: ({messageId, status}) => ({
+        url: `/messages/${messageId}/status`,
+        method: 'PUT',
+        body: {status},
+      }),
+    }),
   }),
 });
 
@@ -132,6 +172,11 @@ export const {
   useGetUserByIdQuery,
   useSearchUsersQuery,
   useLazySearchUsersQuery,
+  useGetChatsQuery,
+  useGetChatByIdQuery,
+  useCreatePrivateChatMutation,
+  useDeleteChatMutation,
   useCreateMessageMutation,
   useGetChatMessagesQuery,
+  useUpdateMessageStatusMutation,
 } = apiSlice;

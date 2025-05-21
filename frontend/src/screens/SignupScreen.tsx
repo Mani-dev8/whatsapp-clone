@@ -7,18 +7,18 @@ import {
   Platform,
   ScrollView,
 } from 'react-native';
-import {useForm, Controller} from 'react-hook-form';
-import {z} from 'zod';
-import {zodResolver} from '@hookform/resolvers/zod';
+import { useForm, Controller } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import tw from 'twrnc';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {useState} from 'react';
-import {useRegisterMutation} from '../store/apiSlice';
-import {useDispatch} from 'react-redux';
-import {STORAGE_KEYS, storageUtils} from '../utils/storage';
-import {initSocket} from '../utils/socket';
+import { useState } from 'react';
+import { useRegisterMutation } from '../store/apiSlice';
+import { useDispatch } from 'react-redux';
+import { STORAGE_KEYS, storageUtils } from '../utils/storage';
+import { initSocket } from '../utils/socket';
 import PrimaryButton from '../components/commons/PrimaryButton';
-import {WhatsappIcon} from '../assets/svg/Icon';
+import { WhatsappIcon } from '../assets/svg/Icon';
 import PrimaryTextInput from '../components/commons/PrimaryTextInput';
 import TextPasswordInput from '../components/commons/TextPasswordInput';
 
@@ -34,14 +34,14 @@ const signupSchema = z.object({
 
 type SignupForm = z.infer<typeof signupSchema>;
 
-export default function SignupScreen({navigation}: any) {
-  const [register, {isLoading, error}] = useRegisterMutation();
+export default function SignupScreen({ navigation }: any) {
+  const [register, { isLoading, error }] = useRegisterMutation();
   const dispatch = useDispatch();
 
   const {
     control,
     handleSubmit,
-    formState: {errors},
+    formState: { errors },
   } = useForm<SignupForm>({
     resolver: zodResolver(signupSchema),
     defaultValues: {
@@ -51,14 +51,14 @@ export default function SignupScreen({navigation}: any) {
     },
   });
 
-  const onSubmit = async ({name, email, password}: SignupForm) => {
+  const onSubmit = async ({ name, email, password }: SignupForm) => {
     try {
-      const response = await register({name, email, password}).unwrap();
+      const response = await register({ name, email, password }).unwrap();
       storageUtils.setItem(STORAGE_KEYS.TOKEN, response.token);
       storageUtils.setItem(STORAGE_KEYS.USER, JSON.stringify(response.user));
-      dispatch({type: 'auth/login', payload: response});
-      await initSocket();
+      dispatch({ type: 'auth/login', payload: response });
       navigation.navigate('Home');
+      await initSocket();
     } catch (err) {
       console.error('Register error:', err);
     }
@@ -83,7 +83,7 @@ export default function SignupScreen({navigation}: any) {
               <Controller
                 control={control}
                 name="name"
-                render={({field: {onChange, value}}) => (
+                render={({ field: { onChange, value } }) => (
                   <PrimaryTextInput
                     placeholder="Full Name"
                     value={value}
@@ -100,7 +100,7 @@ export default function SignupScreen({navigation}: any) {
               <Controller
                 control={control}
                 name="email"
-                render={({field: {onChange, value}}) => (
+                render={({ field: { onChange, value } }) => (
                   <PrimaryTextInput
                     placeholder="Email"
                     value={value}
@@ -119,7 +119,7 @@ export default function SignupScreen({navigation}: any) {
               <Controller
                 control={control}
                 name="password"
-                render={({field: {onChange, value}}) => (
+                render={({ field: { onChange, value } }) => (
                   <TextPasswordInput
                     value={value}
                     onChangeText={onChange}
