@@ -1,3 +1,5 @@
+export const API_URL = 'http://192.168.1.146:5001/';
+
 export const COLORS = {
   app: {
     primary: '#128C7E',

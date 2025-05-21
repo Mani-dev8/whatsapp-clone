@@ -1,5 +1,6 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import {storageUtils, STORAGE_KEYS} from '../utils/storage';
+import { API_URL } from '../utils/constants';
 
 export interface UserProfileResponse {
   id: string;
@@ -36,7 +37,7 @@ interface LoginRequest {
   password: string;
 }
 
-interface MessageResponse {
+export interface MessageResponse {
   id: string;
   chat: string;
   sender: {id: string; name: string};
@@ -67,7 +68,7 @@ interface CreatePrivateChatRequest {
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://192.168.122.81:5001/',
+    baseUrl: API_URL,
     prepareHeaders: headers => {
       const token = storageUtils.getItem(STORAGE_KEYS.TOKEN);
       if (token) {
