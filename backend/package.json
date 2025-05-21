@@ -12,7 +12,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.11.0",
   "dependencies": {
     "@tsoa/runtime": "^6.6.0",
     "bcryptjs": "^3.0.2",

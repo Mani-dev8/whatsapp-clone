@@ -709,3 +709,5 @@
 2025-05-21 16:08:41:841 [31merror[39m: [31mStartup error: querySrv ENOTFOUND _mongodb._tcp.982[39m
 2025-05-21 16:12:36:1236 [32minfo[39m: [32mConnected to MongoDB[39m
 2025-05-21 16:12:36:1236 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-21 17:51:01:511 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-21 17:51:01:511 [32minfo[39m: [32mServer is listening on port 5001[39m
