@@ -1,6 +1,6 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import {storageUtils, STORAGE_KEYS} from '../utils/storage';
-import { API_URL } from '../utils/constants';
+import {API_URL} from '../utils/constants';
 
 export interface UserProfileResponse {
   id: string;
@@ -65,6 +65,12 @@ interface CreatePrivateChatRequest {
   participantId: string;
 }
 
+interface UpdateUserProfileRequest {
+  name?: string;
+  about?: string;
+  profilePicture?: string;
+}
+
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
@@ -78,6 +84,7 @@ export const apiSlice = createApi({
       return headers;
     },
   }),
+  tagTypes: ['User', 'Chats', 'Messages'],
   endpoints: builder => ({
     register: builder.mutation<AuthResponse, RegisterRequest>({
       query: body => ({
@@ -109,6 +116,18 @@ export const apiSlice = createApi({
     }),
     getCurrentUser: builder.query<UserProfileResponse, void>({
       query: () => '/users/me',
+      providesTags: ['User'],
+    }),
+    updateUserProfile: builder.mutation<
+      UserProfileResponse,
+      UpdateUserProfileRequest
+    >({
+      query: body => ({
+        url: '/users/me',
+        method: 'PUT',
+        body,
+      }),
+      invalidatesTags: ['User'],
     }),
     getUserById: builder.query<UserProfileResponse, string>({
       query: userId => `/users/${userId}`,
@@ -180,4 +199,5 @@ export const {
   useCreateMessageMutation,
   useGetChatMessagesQuery,
   useUpdateMessageStatusMutation,
+  useUpdateUserProfileMutation
 } = apiSlice;

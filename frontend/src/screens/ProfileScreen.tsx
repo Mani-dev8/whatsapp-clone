@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -10,48 +10,53 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import tw from 'twrnc';
 import ProfileEditModal from '../components/profile-screen/ProfileEditModal';
-
-const initialProfile = {
-  name: 'John Doe',
-  email: 'john.doe@example.com',
-  profilePicture:
-    'https://api.a0.dev/assets/image?text=professional%20portrait%20photo%20of%20person&seed=123',
-  about: "Hey there! I'm using WhatsApp",
-};
+import { useGetCurrentUserQuery, useUpdateUserProfileMutation } from '../store/apiSlice';
+import { toast } from 'sonner-native';
 
 export default function ProfileScreen() {
-  const [profile, setProfile] = useState(initialProfile);
+  const { data: profile, refetch } = useGetCurrentUserQuery();
+  const [updateUserProfile] = useUpdateUserProfileMutation();
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
-  const [editType, setEditType] = useState<'name' | 'about' | 'profilePicture' | null>(
-    null,
-  );
+  const [editType, setEditType] = useState<'name' | 'about' | 'profilePicture' | null>(null);
 
   const handleEdit = (type: 'name' | 'about' | 'profilePicture') => {
     setEditType(type);
     setIsEditModalVisible(true);
   };
 
-  const handleUpdate = (type: string, value: string) => {
-    setProfile(prev => ({
-      ...prev,
-      [type]: value,
-    }));
-    setIsEditModalVisible(false);
+  const handleUpdate = async (type: string, value: string) => {
+    try {
+      await updateUserProfile({ [type]: value }).unwrap();
+      toast.success(`${type.charAt(0).toUpperCase() + type.slice(1)} updated successfully`);
+      refetch(); // Ensure latest profile data
+      setIsEditModalVisible(false);
+    } catch (error) {
+      toast.error(`Failed to update ${type}`);
+      console.error(`Update ${type} error:`, error);
+    }
   };
 
+  if (!profile) {
+    return null;
+  }
+
   return (
-    <ScrollView style={tw`flex-1 bg-gray-100`}>
+    <ScrollView style={tw`flex-1 bg-gray-100`} keyboardShouldPersistTaps="handled">
       <View style={tw`bg-white`}>
         <View style={tw`items-center py-6`}>
           <TouchableOpacity
             onPress={() => handleEdit('profilePicture')}
-            style={tw`relative`}>
+            style={tw`relative`}
+          >
             <Image
-              source={{uri: profile.profilePicture}}
-              style={tw`w-32 h-32 rounded-full`}
+              source={{
+                uri:
+                  profile.profilePicture ||
+                  `https://avatar.iran.liara.run/username?username=${profile.name}&bold=false&length=1`,
+              }}
+              style={tw`w-32 h-32 rounded-full bg-zinc-100`}
             />
-            <View
-              style={tw`absolute bottom-0 right-0 bg-teal-600 p-2 rounded-full`}>
+            <View style={tw`absolute bottom-0 right-0 bg-teal-600 p-2 rounded-full`}>
               <MaterialIcons name="camera-alt" size={20} color="white" />
             </View>
           </TouchableOpacity>

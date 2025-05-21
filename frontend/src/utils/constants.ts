@@ -1,4 +1,9 @@
-export const API_URL = 'http://192.168.1.146:5001/';
+import {Dimensions} from 'react-native';
+
+export const API_URL = 'http://192.168.122.81:5001/';
+
+export const {width: WINDOW_WIDTH, height: WINDOW_HEIGHT} =
+  Dimensions.get('window');
 
 export const COLORS = {
   app: {

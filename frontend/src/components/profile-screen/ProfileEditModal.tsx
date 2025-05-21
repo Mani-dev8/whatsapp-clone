@@ -38,7 +38,7 @@ export default function ProfileEditModal({
       setIsValid(input.trim().length >= 3);
     } else if (type === 'about') {
       setIsValid(input.trim().length >= 5);
-    } else if (type === 'photo') {
+    } else if (type === 'profilePicture') {
       setIsValid(input.trim().length > 0);
     }
   };
@@ -54,7 +54,7 @@ export default function ProfileEditModal({
         return 'Edit name';
       case 'about':
         return 'Edit about';
-      case 'photo':
+      case 'profilePicture':
         return 'Change profile photo';
       default:
         return '';
@@ -67,7 +67,7 @@ export default function ProfileEditModal({
         return 'Enter your name';
       case 'about':
         return 'Enter about info';
-      case 'photo':
+      case 'profilePicture':
         return 'Enter photo URL';
       default:
         return '';
@@ -92,7 +92,7 @@ export default function ProfileEditModal({
           </View>
 
           <View style={tw`p-4`}>
-            {type === 'photo' && value && (
+            {type === 'profilePicture' && value && (
               <Image
                 source={{uri: value}}
                 style={tw`w-32 h-32 rounded-full self-center mb-4`}

@@ -8,7 +8,7 @@ import HomeHeader from '../components/home-screen/HomeHeader';
 import TabBar from '../components/commons/TabBar';
 import { statusBarWithPrimaryBg } from '../utils/helper';
 import SearchBar from '../components/commons/SearchBar';
-import { useCreatePrivateChatMutation, useLazySearchUsersQuery } from '../store/apiSlice';
+import { useCreatePrivateChatMutation, useGetChatsQuery, useLazySearchUsersQuery } from '../store/apiSlice';
 import SearchListItem from '../components/commons/SearchListItem';
 import ChatListItem from '../components/commons/ChatListItem';
 import { toast } from 'sonner-native';
@@ -16,7 +16,8 @@ import { toast } from 'sonner-native';
 export default function HomeScreen({ navigation }: any) {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTab, setActiveTab] = useState('Chats');
-
+  const { data: chatsData, isLoading } = useGetChatsQuery()
+  console.log("🚀 ~ HomeScreen ~ data:", chatsData)
   const [triggerSearch, { data: searchResults, isFetching }] =
     useLazySearchUsersQuery();
 
@@ -30,6 +31,10 @@ export default function HomeScreen({ navigation }: any) {
       toast.error('Failed to start chat');
       console.error('Create chat error:', error);
     }
+  };
+
+  const handelExistingChat = async (chatId: string, chatName: string) => {
+    navigation.navigate('Chat', { chatId, chatName });
   };
 
   useEffect(() => {
@@ -56,7 +61,7 @@ export default function HomeScreen({ navigation }: any) {
       <TabBar activeTab={activeTab} setActiveTab={setActiveTab} />
       <SearchBar value={searchQuery} onChangeText={setSearchQuery} />
       <FlatList
-        data={searchQuery ? searchResults : []}
+        data={searchQuery ? searchResults : chatsData}
         keyExtractor={item => item.id}
         renderItem={({ item }) =>
           searchQuery ? (
@@ -67,7 +72,7 @@ export default function HomeScreen({ navigation }: any) {
           ) : (
             <ChatListItem
               chat={item}
-              onPress={() => startNewChat(item.id)}
+              onPress={() => { handelExistingChat(item.id, item.name) }}
             />
           )
         }
