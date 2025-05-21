@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.winstonLogger = void 0;
-const env_1 = require("@/api/config/env");
+const env_1 = require("../api/config/env");
 const winston_1 = __importDefault(require("winston"));
 const levels = {
     error: 0,

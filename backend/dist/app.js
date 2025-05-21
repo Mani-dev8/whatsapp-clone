@@ -27,6 +27,10 @@ app.use(limiter);
 app.use(loggerMiddleware_1.logger);
 // Register TSOA routes and Swagger UI
 (0, routes_1.registerRoutes)(app);
+// Health check endpoint
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'ok', uptime: process.uptime() });
+});
 app.use((req, res, next) => {
     console.log('App middleware request.user:', req.user);
     next();

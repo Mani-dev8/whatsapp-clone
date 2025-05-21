@@ -13,7 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MessageController = void 0;
-const errorTypes_1 = require("@/util/errorTypes");
+const errorTypes_1 = require("../../util/errorTypes");
 const tsoa_1 = require("tsoa");
 const chatModel_1 = require("../models/chatModel");
 const messageModel_1 = require("../models/messageModel");

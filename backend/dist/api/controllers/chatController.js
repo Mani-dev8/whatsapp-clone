@@ -20,7 +20,7 @@ const tsoa_1 = require("tsoa");
 const chatModel_1 = require("../models/chatModel");
 const messageModel_1 = require("../models/messageModel");
 const userModel_1 = require("../models/userModel");
-const errorTypes_1 = require("@/util/errorTypes");
+const errorTypes_1 = require("../../util/errorTypes");
 const mongoose_1 = __importDefault(require("mongoose"));
 let ChatController = class ChatController extends tsoa_1.Controller {
     /**

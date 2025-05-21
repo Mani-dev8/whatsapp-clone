@@ -19,7 +19,7 @@ exports.AuthController = void 0;
 const tsoa_1 = require("tsoa");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const userModel_1 = require("../models/userModel");
-const errorTypes_1 = require("@/util/errorTypes");
+const errorTypes_1 = require("../../util/errorTypes");
 const env_1 = require("../config/env");
 let AuthController = class AuthController extends tsoa_1.Controller {
     /**

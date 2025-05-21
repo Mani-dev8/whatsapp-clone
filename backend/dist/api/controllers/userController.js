@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
 const tsoa_1 = require("tsoa");
 const userModel_1 = require("../models/userModel");
-const errorTypes_1 = require("@/util/errorTypes");
+const errorTypes_1 = require("../../util/errorTypes");
 let UserController = class UserController extends tsoa_1.Controller {
     /**
      * Get the current user's profile

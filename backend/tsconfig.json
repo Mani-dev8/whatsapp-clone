@@ -14,7 +14,17 @@
     "baseUrl": "./src",
     "paths": {
       "@/*": ["*"]
-    }
+    },
+    "types": [
+      "node",
+      "express",
+      "mongoose",
+      "jsonwebtoken",
+      "bcryptjs",
+      "swagger-ui-express",
+      "cors",
+      "compression"
+    ]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "**/*.test.ts"]

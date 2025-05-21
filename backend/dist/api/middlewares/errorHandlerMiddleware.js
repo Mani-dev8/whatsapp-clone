@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.errorHandler = void 0;
-const errorTypes_1 = require("@/util/errorTypes");
+const errorTypes_1 = require("../../util/errorTypes");
 const http_status_codes_1 = require("http-status-codes");
 const env_1 = require("../config/env");
 const mongoose_1 = require("mongoose");

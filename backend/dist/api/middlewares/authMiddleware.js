@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.expressAuthentication = expressAuthentication;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const mongoose_1 = __importDefault(require("mongoose"));
-const errorTypes_1 = require("@/util/errorTypes");
+const errorTypes_1 = require("../../util/errorTypes");
 const env_1 = require("../config/env");
 async function expressAuthentication(request, securityName, scopes) {
     if (securityName !== 'jwt') {

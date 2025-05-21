@@ -9,8 +9,8 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const messageModel_1 = require("./models/messageModel");
 const chatModel_1 = require("./models/chatModel");
 const userModel_1 = require("./models/userModel");
-const errorTypes_1 = require("@/util/errorTypes");
-const logger_1 = require("@/util/logger");
+const errorTypes_1 = require("../util/errorTypes");
+const logger_1 = require("../util/logger");
 const env_1 = require("./config/env");
 function initializeSocket(io) {
     // Middleware for socket authentication
