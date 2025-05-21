@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "generate-routes": "tsoa spec-and-routes",
-    "dev": "nodemon src/server.ts --exec \"ts-node -r tsconfig-paths/register src/server.ts\""
+    "dev": "nodemon src/server.ts --exec \"ts-node -r tsconfig-paths/register src/server.ts\"",
+    "build": "tsc && npm run generate-routes",
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",

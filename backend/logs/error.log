@@ -1,1 +1,5 @@
 2025-05-19 10:53:01:531 [31merror[39m: [31mUncaught Exception: listen EADDRINUSE: address already in use :::5000[39m
+2025-05-21 11:37:50:3750 [31merror[39m: [31mSocket authentication error: No token provided[39m
+2025-05-21 11:38:42:3842 [31merror[39m: [31mSocket authentication error: No token provided[39m
+2025-05-21 16:08:07:87 [31merror[39m: [31mStartup error: querySrv ENOTFOUND _mongodb._tcp.982[39m
+2025-05-21 16:08:41:841 [31merror[39m: [31mStartup error: querySrv ENOTFOUND _mongodb._tcp.982[39m

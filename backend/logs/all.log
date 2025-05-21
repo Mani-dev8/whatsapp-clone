@@ -457,3 +457,255 @@
 2025-05-21 06:42:37:4237 [32minfo[39m: [32mPUT /messages/682d278438a306cff1f61105/status[39m
 2025-05-21 06:42:43:4243 [32minfo[39m: [32mPOST /chats/private[39m
 2025-05-21 06:42:43:4243 [32minfo[39m: [32mPUT /messages/682d278438a306cff1f61105/status[39m
+2025-05-21 10:31:38:3138 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-21 10:31:38:3138 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-21 11:09:25:925 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-21 11:09:25:925 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-21 11:11:05:115 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-21 11:11:05:115 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-21 11:14:04:144 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-21 11:14:04:144 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-21 11:18:56:1856 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-21 11:18:56:1856 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-21 11:36:45:3645 [32minfo[39m: [32mGET /users/search/Te[39m
+2025-05-21 11:36:52:3652 [32minfo[39m: [32mGET /users/search/U[39m
+2025-05-21 11:36:56:3656 [32minfo[39m: [32mGET /users/search/A[39m
+2025-05-21 11:36:57:3657 [32minfo[39m: [32mGET /users/search/Am[39m
+2025-05-21 11:36:58:3658 [32minfo[39m: [32mGET /users/search/Amr[39m
+2025-05-21 11:37:00:370 [32minfo[39m: [32mGET /users/search/T[39m
+2025-05-21 11:37:06:376 [32minfo[39m: [32mGET /users/search/Tes[39m
+2025-05-21 11:37:26:3726 [32minfo[39m: [32mPOST /auth/logout[39m
+2025-05-21 11:37:50:3750 [32minfo[39m: [32mPOST /auth/register[39m
+2025-05-21 11:37:50:3750 [31merror[39m: [31mSocket authentication error: No token provided[39m
+2025-05-21 11:38:11:3811 [32minfo[39m: [32mGET /users/search/Al[39m
+2025-05-21 11:38:15:3815 [32minfo[39m: [32mPOST /auth/logout[39m
+2025-05-21 11:38:42:3842 [32minfo[39m: [32mPOST /auth/register[39m
+2025-05-21 11:38:42:3842 [31merror[39m: [31mSocket authentication error: No token provided[39m
+2025-05-21 11:43:10:4310 [32minfo[39m: [32mGET /users/search/Te[39m
+2025-05-21 11:43:15:4315 [32minfo[39m: [32mGET /users/search/Jo[39m
+2025-05-21 11:43:18:4318 [32minfo[39m: [32mGET /users/search/J[39m
+2025-05-21 11:43:22:4322 [32minfo[39m: [32mGET /users/search/Al[39m
+2025-05-21 11:43:23:4323 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 11:43:24:4324 [32minfo[39m: [32mGET /messages/chat/682d6f03692f608c66480574?page=1&limit=20[39m
+2025-05-21 11:43:24:4324 [32minfo[39m: [32mUser connected: 682d6dea692f608c66480567[39m
+2025-05-21 11:43:24:4324 [32minfo[39m: [32mUser 682d6dea692f608c66480567 joined chat room: 682d6f03692f608c66480574[39m
+2025-05-21 11:44:31:4431 [32minfo[39m: [32mUser disconnected: 682d6dea692f608c66480567[39m
+2025-05-21 11:56:17:5617 [32minfo[39m: [32mGET /users/search/Jo[39m
+2025-05-21 11:56:21:5621 [32minfo[39m: [32mGET /users/search/Al[39m
+2025-05-21 11:56:50:5650 [32minfo[39m: [32mPOST /auth/login[39m
+2025-05-21 11:56:51:5651 [32minfo[39m: [32mUser connected: 682d6db6692f608c66480560[39m
+2025-05-21 11:56:51:5651 [32minfo[39m: [32mUser 682d6db6692f608c66480560 joined chat room: 682d6f03692f608c66480574[39m
+2025-05-21 11:57:04:574 [32minfo[39m: [32mGET /users/search/jo[39m
+2025-05-21 11:57:05:575 [32minfo[39m: [32mGET /users/search/jogn[39m
+2025-05-21 11:57:07:577 [32minfo[39m: [32mGET /users/search/jo[39m
+2025-05-21 11:57:09:579 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 11:57:09:579 [32minfo[39m: [32mGET /messages/chat/682d6f03692f608c66480574?page=1&limit=20[39m
+2025-05-21 11:57:14:5714 [32minfo[39m: [32mGET /users/search/A[39m
+2025-05-21 11:57:15:5715 [32minfo[39m: [32mGET /users/search/Al[39m
+2025-05-21 11:57:17:5717 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 11:57:17:5717 [32minfo[39m: [32mGET /messages/chat/682d6f03692f608c66480574?page=1&limit=20[39m
+2025-05-21 11:57:17:5717 [32minfo[39m: [32mUser connected: 682d6dea692f608c66480567[39m
+2025-05-21 11:57:17:5717 [32minfo[39m: [32mUser 682d6dea692f608c66480567 joined chat room: 682d6f03692f608c66480574[39m
+2025-05-21 11:57:24:5724 [32minfo[39m: [32mNew message from 682d6db6692f608c66480560 in chat 682d6f03692f608c66480574: hi[39m
+2025-05-21 11:57:24:5724 [32minfo[39m: [32mPOST /messages[39m
+2025-05-21 11:57:24:5724 [32minfo[39m: [32mBroadcasting message to participants: 682d6dea692f608c66480567, 682d6db6692f608c66480560[39m
+2025-05-21 11:57:30:5730 [32minfo[39m: [32mPOST /messages[39m
+2025-05-21 11:57:35:5735 [32minfo[39m: [32mPOST /messages[39m
+2025-05-21 11:57:40:5740 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 11:57:44:5744 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 11:57:49:5749 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 11:59:33:5933 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-21 11:59:33:5933 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-21 11:59:37:5937 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-21 11:59:37:5937 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-21 11:59:39:5939 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-21 11:59:39:5939 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-21 11:59:43:5943 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-21 11:59:43:5943 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-21 11:59:55:5955 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 11:59:55:5955 [32minfo[39m: [32mUser connected: 682d6dea692f608c66480567[39m
+2025-05-21 11:59:55:5955 [32minfo[39m: [32mUser 682d6dea692f608c66480567 joined chat room: 682d6f03692f608c66480574[39m
+2025-05-21 11:59:55:5955 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 12:00:10:010 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 12:00:10:010 [32minfo[39m: [32mUser connected: 682d6db6692f608c66480560[39m
+2025-05-21 12:00:10:010 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 12:00:10:010 [32minfo[39m: [32mUser 682d6db6692f608c66480560 joined chat room: 682d6f03692f608c66480574[39m
+2025-05-21 12:00:35:035 [32minfo[39m: [32mPOST /messages[39m
+2025-05-21 12:01:12:112 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 12:01:16:116 [32minfo[39m: [32mUser disconnected: 682d6db6692f608c66480560[39m
+2025-05-21 12:01:16:116 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 12:01:28:128 [32minfo[39m: [32mGET /users/search/jo[39m
+2025-05-21 12:01:29:129 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 12:01:30:130 [32minfo[39m: [32mGET /messages/chat/682d6f03692f608c66480574?page=1&limit=20[39m
+2025-05-21 12:01:30:130 [32minfo[39m: [32mUser connected: 682d6db6692f608c66480560[39m
+2025-05-21 12:01:30:130 [32minfo[39m: [32mUser 682d6db6692f608c66480560 joined chat room: 682d6f03692f608c66480574[39m
+2025-05-21 12:01:30:130 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 12:01:37:137 [32minfo[39m: [32mUser disconnected: 682d6dea692f608c66480567[39m
+2025-05-21 12:01:37:137 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 12:02:07:27 [32minfo[39m: [32mGET /users/search/A[39m
+2025-05-21 12:02:08:28 [32minfo[39m: [32mGET /users/search/Al[39m
+2025-05-21 12:02:08:28 [32minfo[39m: [32mGET /users/search/Ale[39m
+2025-05-21 12:02:09:29 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 12:02:10:210 [32minfo[39m: [32mGET /messages/chat/682d6f03692f608c66480574?page=1&limit=20[39m
+2025-05-21 12:02:10:210 [32minfo[39m: [32mUser connected: 682d6dea692f608c66480567[39m
+2025-05-21 12:02:10:210 [32minfo[39m: [32mUser 682d6dea692f608c66480567 joined chat room: 682d6f03692f608c66480574[39m
+2025-05-21 12:02:10:210 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 12:02:13:213 [32minfo[39m: [32mPOST /messages[39m
+2025-05-21 13:36:03:363 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-21 13:36:03:363 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-21 14:34:47:3447 [32minfo[39m: [32mGET /users/search/A[39m
+2025-05-21 14:34:48:3448 [32minfo[39m: [32mGET /users/search/Al[39m
+2025-05-21 14:34:49:3449 [32minfo[39m: [32mGET /users/search/Ale[39m
+2025-05-21 14:34:50:3450 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 14:34:50:3450 [32minfo[39m: [32mGET /messages/chat/682d6f03692f608c66480574?page=1&limit=20[39m
+2025-05-21 14:34:50:3450 [32minfo[39m: [32mUser connected: 682d6dea692f608c66480567[39m
+2025-05-21 14:34:50:3450 [32minfo[39m: [32mUser 682d6dea692f608c66480567 joined chat room: 682d6f03692f608c66480574[39m
+2025-05-21 14:34:50:3450 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 14:35:13:3513 [32minfo[39m: [32mPOST /auth/login[39m
+2025-05-21 14:35:13:3513 [32minfo[39m: [32mUser connected: 682d6db6692f608c66480560[39m
+2025-05-21 14:35:13:3513 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 14:35:13:3513 [32minfo[39m: [32mUser 682d6db6692f608c66480560 joined chat room: 682d6f03692f608c66480574[39m
+2025-05-21 14:35:19:3519 [32minfo[39m: [32mGET /users/search/jo[39m
+2025-05-21 14:35:21:3521 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 14:35:21:3521 [32minfo[39m: [32mGET /messages/chat/682d6f03692f608c66480574?page=1&limit=20[39m
+2025-05-21 14:35:31:3531 [32minfo[39m: [32mNew message from 682d6db6692f608c66480560 in chat 682d6f03692f608c66480574: Hi[39m
+2025-05-21 14:35:31:3531 [32minfo[39m: [32mPOST /messages[39m
+2025-05-21 14:35:31:3531 [32minfo[39m: [32mBroadcasting message to participants: 682d6dea692f608c66480567, 682d6db6692f608c66480560[39m
+2025-05-21 14:35:31:3531 [32minfo[39m: [32mPUT /messages/682d975bed6bc70e6a290c2b/status[39m
+2025-05-21 14:35:41:3541 [32minfo[39m: [32mNew message from 682d6dea692f608c66480567 in chat 682d6f03692f608c66480574: Hello[39m
+2025-05-21 14:35:41:3541 [32minfo[39m: [32mPOST /messages[39m
+2025-05-21 14:35:41:3541 [32minfo[39m: [32mBroadcasting message to participants: 682d6dea692f608c66480567, 682d6db6692f608c66480560[39m
+2025-05-21 14:35:41:3541 [32minfo[39m: [32mPUT /messages/682d9765ed6bc70e6a290c4b/status[39m
+2025-05-21 14:38:34:3834 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 14:38:44:3844 [32minfo[39m: [32mUser disconnected: 682d6dea692f608c66480567[39m
+2025-05-21 14:38:44:3844 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 14:39:09:399 [32minfo[39m: [32mGET /users/search/Jo[39m
+2025-05-21 14:39:11:3911 [32minfo[39m: [32mGET /users/search/A[39m
+2025-05-21 14:39:12:3912 [32minfo[39m: [32mGET /users/search/Al[39m
+2025-05-21 14:39:13:3913 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 14:39:13:3913 [32minfo[39m: [32mGET /messages/chat/682d6f03692f608c66480574?page=1&limit=20[39m
+2025-05-21 14:39:14:3914 [32minfo[39m: [32mUser connected: 682d6dea692f608c66480567[39m
+2025-05-21 14:39:14:3914 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 14:39:14:3914 [32minfo[39m: [32mUser 682d6dea692f608c66480567 joined chat room: 682d6f03692f608c66480574[39m
+2025-05-21 14:39:49:3949 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 14:40:11:4011 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 14:40:25:4025 [32minfo[39m: [32mNew message from 682d6dea692f608c66480567 in chat 682d6f03692f608c66480574: Hii[39m
+2025-05-21 14:40:25:4025 [32minfo[39m: [32mBroadcasting message to participants: 682d6dea692f608c66480567, 682d6db6692f608c66480560[39m
+2025-05-21 14:40:25:4025 [32minfo[39m: [32mPOST /messages[39m
+2025-05-21 14:40:25:4025 [32minfo[39m: [32mPUT /messages/682d9881ed6bc70e6a290c8c/status[39m
+2025-05-21 14:40:33:4033 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 14:40:40:4040 [32minfo[39m: [32mUser disconnected: 682d6dea692f608c66480567[39m
+2025-05-21 14:40:40:4040 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 14:41:20:4120 [32minfo[39m: [32mGET /users/search/Al[39m
+2025-05-21 14:41:37:4137 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 14:41:37:4137 [32minfo[39m: [32mGET /messages/chat/682d6f03692f608c66480574?page=1&limit=20[39m
+2025-05-21 14:41:37:4137 [32minfo[39m: [32mUser connected: 682d6dea692f608c66480567[39m
+2025-05-21 14:41:37:4137 [32minfo[39m: [32mUser 682d6dea692f608c66480567 joined chat room: 682d6f03692f608c66480574[39m
+2025-05-21 14:41:37:4137 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 14:44:50:4450 [32minfo[39m: [32mUser connected: 682d6dea692f608c66480567[39m
+2025-05-21 14:44:50:4450 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 14:44:50:4450 [32minfo[39m: [32mUser 682d6dea692f608c66480567 joined chat room: 682d6f03692f608c66480574[39m
+2025-05-21 14:44:50:4450 [32minfo[39m: [32mUser disconnected: 682d6dea692f608c66480567[39m
+2025-05-21 14:44:50:4450 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 14:46:31:4631 [32minfo[39m: [32mUser disconnected: 682d6dea692f608c66480567[39m
+2025-05-21 14:46:31:4631 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 14:46:40:4640 [32minfo[39m: [32mUser disconnected: 682d6db6692f608c66480560[39m
+2025-05-21 14:46:40:4640 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 14:49:13:4913 [32minfo[39m: [32mUser connected: 682d6dea692f608c66480567[39m
+2025-05-21 14:49:13:4913 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 14:49:13:4913 [32minfo[39m: [32mUser 682d6dea692f608c66480567 joined chat room: 682d6f03692f608c66480574[39m
+2025-05-21 14:49:19:4919 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 14:49:22:4922 [32minfo[39m: [32mUser disconnected: 682d6dea692f608c66480567[39m
+2025-05-21 14:49:22:4922 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 14:49:29:4929 [32minfo[39m: [32mGET /users/search/Al[39m
+2025-05-21 14:49:30:4930 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 14:49:30:4930 [32minfo[39m: [32mGET /messages/chat/682d6f03692f608c66480574?page=1&limit=20[39m
+2025-05-21 14:49:30:4930 [32minfo[39m: [32mUser connected: 682d6dea692f608c66480567[39m
+2025-05-21 14:49:30:4930 [32minfo[39m: [32mUser 682d6dea692f608c66480567 joined chat room: 682d6f03692f608c66480574[39m
+2025-05-21 14:49:30:4930 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 14:50:29:5029 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 14:50:40:5040 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 14:50:42:5042 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 14:51:12:5112 [32minfo[39m: [32mGET /users/search/jo[39m
+2025-05-21 14:51:18:5118 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 14:51:18:5118 [32minfo[39m: [32mGET /messages/chat/682d6f03692f608c66480574?page=1&limit=20[39m
+2025-05-21 14:51:19:5119 [32minfo[39m: [32mUser connected: 682d6db6692f608c66480560[39m
+2025-05-21 14:51:19:5119 [32minfo[39m: [32mUser 682d6db6692f608c66480560 joined chat room: 682d6f03692f608c66480574[39m
+2025-05-21 14:51:19:5119 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 14:52:51:5251 [32minfo[39m: [32mUser disconnected: 682d6dea692f608c66480567[39m
+2025-05-21 14:52:51:5251 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 15:05:31:531 [32minfo[39m: [32mUser connected: 682d6dea692f608c66480567[39m
+2025-05-21 15:05:31:531 [32minfo[39m: [32mUser 682d6dea692f608c66480567 joined chat room: 682d6f03692f608c66480574[39m
+2025-05-21 15:05:31:531 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 15:05:37:537 [32minfo[39m: [32mNew message from 682d6dea692f608c66480567 in chat 682d6f03692f608c66480574: Hi[39m
+2025-05-21 15:05:37:537 [32minfo[39m: [32mBroadcasting message to participants: 682d6dea692f608c66480567, 682d6db6692f608c66480560[39m
+2025-05-21 15:05:37:537 [32minfo[39m: [32mPOST /messages[39m
+2025-05-21 15:05:37:537 [32minfo[39m: [32mPUT /messages/682d9e69ed6bc70e6a290d01/status[39m
+2025-05-21 15:05:52:552 [32minfo[39m: [32mUser disconnected: 682d6dea692f608c66480567[39m
+2025-05-21 15:05:52:552 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 15:05:52:552 [32minfo[39m: [32mUser disconnected: 682d6db6692f608c66480560[39m
+2025-05-21 15:05:52:552 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 15:06:03:63 [32minfo[39m: [32mGET /users/search/Ale[39m
+2025-05-21 15:06:04:64 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 15:06:04:64 [32minfo[39m: [32mGET /messages/chat/682d6f03692f608c66480574?page=1&limit=20[39m
+2025-05-21 15:06:05:65 [32minfo[39m: [32mUser connected: 682d6dea692f608c66480567[39m
+2025-05-21 15:06:05:65 [32minfo[39m: [32mUser 682d6dea692f608c66480567 joined chat room: 682d6f03692f608c66480574[39m
+2025-05-21 15:06:05:65 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 15:07:13:713 [32minfo[39m: [32mGET /users/search/ji[39m
+2025-05-21 15:07:14:714 [32minfo[39m: [32mGET /users/search/j[39m
+2025-05-21 15:07:15:715 [32minfo[39m: [32mGET /users/search/jo[39m
+2025-05-21 15:07:16:716 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 15:07:16:716 [32minfo[39m: [32mGET /messages/chat/682d6f03692f608c66480574?page=1&limit=20[39m
+2025-05-21 15:07:16:716 [32minfo[39m: [32mUser connected: 682d6db6692f608c66480560[39m
+2025-05-21 15:07:16:716 [32minfo[39m: [32mUser 682d6db6692f608c66480560 joined chat room: 682d6f03692f608c66480574[39m
+2025-05-21 15:07:16:716 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 15:07:29:729 [32minfo[39m: [32mNew message from 682d6db6692f608c66480560 in chat 682d6f03692f608c66480574: Hi John[39m
+2025-05-21 15:07:29:729 [32minfo[39m: [32mBroadcasting message to participants: 682d6dea692f608c66480567, 682d6db6692f608c66480560[39m
+2025-05-21 15:07:29:729 [32minfo[39m: [32mPUT /messages/682d9ed9ed6bc70e6a290d48/status[39m
+2025-05-21 15:07:40:740 [32minfo[39m: [32mNew message from 682d6db6692f608c66480560 in chat 682d6f03692f608c66480574: Hi 2[39m
+2025-05-21 15:07:40:740 [32minfo[39m: [32mBroadcasting message to participants: 682d6dea692f608c66480567, 682d6db6692f608c66480560[39m
+2025-05-21 15:07:41:741 [32minfo[39m: [32mPUT /messages/682d9ee4ed6bc70e6a290d5d/status[39m
+2025-05-21 15:07:45:745 [32minfo[39m: [32mUser disconnected: 682d6dea692f608c66480567[39m
+2025-05-21 15:07:45:745 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 15:07:49:749 [32minfo[39m: [32mNew message from 682d6db6692f608c66480560 in chat 682d6f03692f608c66480574: hii[39m
+2025-05-21 15:07:49:749 [32minfo[39m: [32mBroadcasting message to participants: 682d6dea692f608c66480567, 682d6db6692f608c66480560[39m
+2025-05-21 15:08:16:816 [32minfo[39m: [32mGET /users/search/Alex[39m
+2025-05-21 15:08:18:818 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 15:08:19:819 [32minfo[39m: [32mGET /messages/chat/682d6f03692f608c66480574?page=1&limit=20[39m
+2025-05-21 15:08:19:819 [32minfo[39m: [32mUser connected: 682d6dea692f608c66480567[39m
+2025-05-21 15:08:19:819 [32minfo[39m: [32mUser 682d6dea692f608c66480567 joined chat room: 682d6f03692f608c66480574[39m
+2025-05-21 15:08:19:819 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 15:08:25:825 [32minfo[39m: [32mNew message from 682d6dea692f608c66480567 in chat 682d6f03692f608c66480574: Hi[39m
+2025-05-21 15:08:25:825 [32minfo[39m: [32mBroadcasting message to participants: 682d6dea692f608c66480567, 682d6db6692f608c66480560[39m
+2025-05-21 15:08:25:825 [32minfo[39m: [32mPUT /messages/682d9f11ed6bc70e6a290d89/status[39m
+2025-05-21 15:16:09:169 [32minfo[39m: [32mUser connected: 682d6dea692f608c66480567[39m
+2025-05-21 15:16:09:169 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 15:16:09:169 [32minfo[39m: [32mUser 682d6dea692f608c66480567 joined chat room: 682d6f03692f608c66480574[39m
+2025-05-21 15:16:09:169 [32minfo[39m: [32mUser disconnected: 682d6dea692f608c66480567[39m
+2025-05-21 15:16:09:169 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 15:16:13:1613 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 15:16:17:1617 [32minfo[39m: [32mUser disconnected: 682d6dea692f608c66480567[39m
+2025-05-21 15:16:17:1617 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 15:16:17:1617 [32minfo[39m: [32mUser disconnected: 682d6db6692f608c66480560[39m
+2025-05-21 15:16:17:1617 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 15:16:33:1633 [32minfo[39m: [32mGET /users/search/Xhat[39m
+2025-05-21 15:16:35:1635 [32minfo[39m: [32mGET /users/search/Al[39m
+2025-05-21 15:16:37:1637 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 15:16:37:1637 [32minfo[39m: [32mGET /messages/chat/682d6f03692f608c66480574?page=1&limit=20[39m
+2025-05-21 15:16:37:1637 [32minfo[39m: [32mUser connected: 682d6dea692f608c66480567[39m
+2025-05-21 15:16:37:1637 [32minfo[39m: [32mUser 682d6dea692f608c66480567 joined chat room: 682d6f03692f608c66480574[39m
+2025-05-21 15:16:37:1637 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 15:18:53:1853 [32minfo[39m: [32mPOST /chats/private[39m
+2025-05-21 15:23:48:2348 [32minfo[39m: [32mUser disconnected: 682d6dea692f608c66480567[39m
+2025-05-21 15:23:48:2348 [35mhttp[39m: [35mSocket connected[39m
+2025-05-21 15:32:11:3211 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-21 15:32:11:3211 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-21 15:33:53:3353 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-21 15:33:53:3353 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-21 16:04:13:413 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-21 16:04:13:413 [32minfo[39m: [32mServer is listening on port 5001[39m
+2025-05-21 16:08:02:82 [32minfo[39m: [32mReceived shutdown signal, closing server...[39m
+2025-05-21 16:08:07:87 [31merror[39m: [31mStartup error: querySrv ENOTFOUND _mongodb._tcp.982[39m
+2025-05-21 16:08:41:841 [31merror[39m: [31mStartup error: querySrv ENOTFOUND _mongodb._tcp.982[39m
+2025-05-21 16:12:36:1236 [32minfo[39m: [32mConnected to MongoDB[39m
+2025-05-21 16:12:36:1236 [32minfo[39m: [32mServer is listening on port 5001[39m

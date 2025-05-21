@@ -1,7 +1,7 @@
 import { Server as SocketIOServer, Socket } from 'socket.io';
 import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
-import { Message, MessageDocument } from './models/messageModel';
+import { Message, MessageDocument, MessageStatus } from './models/messageModel';
 import { Chat, ChatDocument } from './models/chatModel';
 import { User } from './models/userModel';
 import { UnauthorizedError } from '@/util/errorTypes';
@@ -9,7 +9,7 @@ import { winstonLogger } from '@/util/logger';
 import { env } from './config/env';
 
 interface JwtPayload {
-  userId: string;
+  _id: string;
   email: string;
   role?: string;
 }
@@ -28,7 +28,7 @@ interface PopulatedMessage {
   content: string;
   messageType: string;
   mediaUrl?: string;
-  status: string;
+  status: MessageStatus;
   readBy: mongoose.Types.ObjectId[];
   createdAt: Date;
   updatedAt: Date;
@@ -49,7 +49,7 @@ export function initializeSocket(io: SocketIOServer) {
       }
 
       const decoded = jwt.verify(token, jwtSecret) as JwtPayload;
-      (socket as any).user = { userId: decoded.userId };
+      (socket as any).user = { userId: decoded._id };
       next();
     } catch (error) {
       winstonLogger.error('Socket authentication error:', error);
@@ -70,11 +70,11 @@ export function initializeSocket(io: SocketIOServer) {
   // Handle socket connections
   io.on('connection', (socket: Socket) => {
     const auth = (socket as any).user as SocketAuth;
-    const userId = new mongoose.Types.ObjectId(auth.userId);
+    const userId = auth.userId;
     winstonLogger.info(`User connected: ${userId}`);
 
     // Join user to their own room for direct messaging
-    socket.join(userId.toHexString());
+    socket.join(userId);
 
     // Update user online status
     updateUserStatus(io, userId, true);
@@ -93,17 +93,24 @@ export function initializeSocket(io: SocketIOServer) {
       }) => {
         try {
           const { chatId, content, messageType = 'text', mediaUrl } = data;
-          const chat = await Chat.findById(chatId).populate('participants');
+
+          winstonLogger.info(
+            `New message from ${userId} in chat ${chatId}: ${content}`,
+          );
+
+          const chat = await Chat.findById(chatId);
           if (!chat) {
             socket.emit('error', { message: 'Chat not found' });
             return;
           }
 
-          if (!chat.participants.some((p: any) => p._id.equals(userId))) {
+          // Verify user is part of the chat
+          if (!chat.participants.some((p) => p.toString() === userId)) {
             socket.emit('error', { message: 'User not in chat' });
             return;
           }
 
+          // Create new message
           const message = new Message({
             chat: chatId,
             sender: userId,
@@ -111,27 +118,34 @@ export function initializeSocket(io: SocketIOServer) {
             messageType,
             mediaUrl,
             status: 'sent',
-            readBy: [],
+            readBy: [userId],
+            deletedFor: [],
           }) as MessageDocument;
 
           await message.save();
 
-          // Populate sender for response
+          // Update chat's latest message
+          await Chat.findByIdAndUpdate(chatId, {
+            latestMessage: message._id,
+            updatedAt: new Date(),
+          });
+
+          // Populate message for response
           const populatedMessage = (await Message.findById(message._id)
             .populate('sender', 'name')
             .lean()) as PopulatedMessage | null;
 
           if (!populatedMessage) {
             socket.emit('error', { message: 'Message not found after saving' });
-            winstonLogger.error(`Message ${message._id} not found after save`);
             return;
           }
 
+          // Format message for response
           const messageResponse = {
-            id: populatedMessage._id.toHexString(),
+            id: populatedMessage._id.toString(),
             chat: populatedMessage.chat.toString(),
             sender: {
-              id: populatedMessage.sender._id.toHexString(),
+              id: populatedMessage.sender._id.toString(),
               name: populatedMessage.sender.name,
             },
             content: populatedMessage.content,
@@ -143,32 +157,41 @@ export function initializeSocket(io: SocketIOServer) {
             updatedAt: populatedMessage.updatedAt,
           };
 
+          // Get all participants
+          const participants = chat.participants.map((p) => p.toString());
+          winstonLogger.info(
+            `Broadcasting message to participants: ${participants.join(', ')}`,
+          );
+
           // Emit to all participants
-          chat.participants.forEach((participant: any) => {
-            io.to(participant._id.toHexString()).emit(
-              'message',
-              messageResponse,
-            );
+          participants.forEach((participantId) => {
+            io.to(participantId).emit('message', messageResponse);
           });
 
-          // Update message status to 'delivered' for online participants
-          const onlineParticipants = chat.participants.filter(
-            (p: any) =>
-              io.sockets.adapter.rooms.has(p._id.toHexString()) &&
-              !p._id.equals(userId),
+          // For participants who are online, update message status to 'delivered'
+          const onlineParticipants = participants.filter(
+            (pid) => pid !== userId && io.sockets.adapter.rooms.has(pid),
           );
+
           if (onlineParticipants.length > 0) {
             await Message.findByIdAndUpdate(message._id, {
               status: 'delivered',
               $addToSet: {
-                readBy: { $each: onlineParticipants.map((p: any) => p._id) },
+                readBy: { $each: onlineParticipants },
               },
             });
-            io.to(chatId).emit('messageStatus', {
+
+            const statusUpdate = {
               messageId: message._id.toString(),
               status: 'delivered',
-              readBy: onlineParticipants.map((p: any) => p._id.toString()),
-            });
+              readBy: [
+                ...message.readBy.map((id) => id.toString()),
+                ...onlineParticipants,
+              ],
+            };
+
+            // Send status update to sender
+            socket.emit('messageStatus', statusUpdate);
           }
         } catch (error) {
           winstonLogger.error('Error sending message:', error);
@@ -183,49 +206,70 @@ export function initializeSocket(io: SocketIOServer) {
     // Handle typing indicator
     socket.on('typing', (data: { chatId: string; isTyping: boolean }) => {
       const { chatId, isTyping } = data;
-      socket
-        .to(chatId)
-        .emit('typing', { userId: userId.toHexString(), isTyping });
+
+      // Get the chat
+      Chat.findById(chatId)
+        .then((chat) => {
+          if (!chat) return;
+
+          // Broadcast typing status to all participants except sender
+          chat.participants.forEach((participant) => {
+            const pid = participant.toString();
+            if (pid !== userId) {
+              io.to(pid).emit('typing', { userId, chatId, isTyping });
+            }
+          });
+        })
+        .catch((err) => {
+          winstonLogger.error('Error in typing indicator:', err);
+        });
     });
 
     // Handle message status update (e.g., read)
     socket.on(
       'updateMessageStatus',
-      async (data: { messageId: string; status: 'read' }) => {
+      async (data: { messageId: string; status: string }) => {
         try {
           const { messageId, status } = data;
           const message = await Message.findById(messageId);
+
           if (!message) {
             socket.emit('error', { message: 'Message not found' });
             return;
           }
 
-          if (!message.chat) {
-            socket.emit('error', { message: 'Invalid chat' });
+          const chatId = message.chat.toString();
+          const chat = await Chat.findById(chatId);
+
+          if (!chat) {
+            socket.emit('error', { message: 'Chat not found' });
             return;
           }
 
-          const chat = await Chat.findById(message.chat);
-          if (
-            !chat ||
-            !chat.participants.some((p: any) => p._id.equals(userId))
-          ) {
+          // Verify user is part of the chat
+          if (!chat.participants.some((p) => p.toString() === userId)) {
             socket.emit('error', { message: 'User not in chat' });
             return;
           }
 
-          if (status === 'read' && !message.readBy.includes(userId)) {
-            await Message.findByIdAndUpdate(messageId, {
+          // Update message status
+          if (
+            status === 'read' &&
+            !message.readBy.some((id) => id.toString() === userId)
+          ) {
+            message.readBy.push(new mongoose.Types.ObjectId(userId));
+            message.status = 'read' as MessageStatus;
+            await message.save();
+
+            // Notify all participants about status change
+            const statusUpdate = {
+              messageId: message._id.toString(),
               status: 'read',
-              $addToSet: { readBy: userId },
-            });
-            io.to(message.chat.toString()).emit('messageStatus', {
-              messageId: messageId,
-              status: 'read',
-              readBy: [
-                ...message.readBy.map((id) => id.toString()),
-                userId.toString(),
-              ],
+              readBy: message.readBy.map((id) => id.toString()),
+            };
+
+            chat.participants.forEach((participant) => {
+              io.to(participant.toString()).emit('messageStatus', statusUpdate);
             });
           }
         } catch (error) {
@@ -240,14 +284,10 @@ export function initializeSocket(io: SocketIOServer) {
       },
     );
 
-    // Handle disconnection
+    // Handle disconnect
     socket.on('disconnect', async () => {
       winstonLogger.info(`User disconnected: ${userId}`);
       await updateUserStatus(io, userId, false);
-      socket.broadcast.emit('userStatus', {
-        userId: userId.toHexString(),
-        isOnline: false,
-      });
     });
   });
 }
@@ -255,7 +295,7 @@ export function initializeSocket(io: SocketIOServer) {
 // Update user online status
 async function updateUserStatus(
   io: SocketIOServer,
-  userId: mongoose.Types.ObjectId,
+  userId: string,
   isOnline: boolean,
 ) {
   try {
@@ -263,18 +303,25 @@ async function updateUserStatus(
       isOnline,
       lastSeen: new Date(),
     });
-    io.emit('userStatus', { userId: userId.toHexString(), isOnline });
+    winstonLogger.http('Socket connected');
+    // Broadcast user status to all connected clients
+    io.emit('userStatus', { userId, isOnline });
   } catch (error) {
     winstonLogger.error('Error updating user status:', error);
   }
 }
 
 // Join user to all their chats
-async function joinUserChats(socket: Socket, userId: mongoose.Types.ObjectId) {
+async function joinUserChats(socket: Socket, userId: string) {
   try {
-    const chats = (await Chat.find({ participants: userId })) as ChatDocument[];
+    const chats = await Chat.find({
+      participants: userId,
+      isActive: true,
+    });
+
     chats.forEach((chat) => {
-      socket.join(chat._id.toHexString());
+      socket.join(chat._id.toString());
+      winstonLogger.info(`User ${userId} joined chat room: ${chat._id}`);
     });
   } catch (error) {
     winstonLogger.error('Error joining chats:', error);
