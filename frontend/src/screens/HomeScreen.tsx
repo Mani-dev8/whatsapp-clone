@@ -60,6 +60,17 @@ export default function HomeScreen({ navigation }: any) {
       <HomeHeader />
       <TabBar activeTab={activeTab} setActiveTab={setActiveTab} />
       <SearchBar value={searchQuery} onChangeText={setSearchQuery} />
+      {!isLoading && searchQuery && searchResults?.length === 0 && (
+        <View style={tw`flex-1 justify-center items-center`}>
+          <Text style={tw`text-center text-gray-500`}>No users found</Text>
+        </View>
+      )}
+
+      {!isLoading && !searchQuery && chatsData?.length === 0 && (
+        <View style={tw`flex-1 justify-center items-center`}>
+          <Text style={tw`text-center text-gray-500`}>No chats yet</Text>
+        </View>
+      )}
       <FlatList
         data={searchQuery ? searchResults : chatsData}
         keyExtractor={item => item.id}
@@ -77,6 +88,6 @@ export default function HomeScreen({ navigation }: any) {
           )
         }
       />
-    </SafeAreaView>
+    </SafeAreaView >
   );
 }

@@ -1,6 +1,9 @@
 import {Dimensions} from 'react-native';
+import {isDevelopmentMode} from './helper';
 
-export const API_URL = 'http://192.168.122.81:5001/';
+export const API_URL = isDevelopmentMode
+  ? 'http://192.168.122.81:5001/'
+  : 'https://whatsapp-clone-vitp.onrender.com';
 
 export const {width: WINDOW_WIDTH, height: WINDOW_HEIGHT} =
   Dimensions.get('window');
